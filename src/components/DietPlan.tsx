@@ -5,757 +5,702 @@ const days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 const mealPlan = [
   {
     day: "Monday",
+    isVeg: false,
     kcal: "~1860",
-    meals: [
-      {
-        type: "breakfast", label: "🌅 Breakfast", time: "7:00 AM",
-        bg: "#fffde7", accent: "#f9a825",
-        items: [
-          { name: "Oats Porridge", portion: "50g dry oats (½ cup)" },
-          { name: "Banana", portion: "1 medium (120g)" },
-          { name: "Honey", portion: "1 tsp (7g)" },
-          { name: "Chia Seeds", portion: "1 tbsp (12g)" },
-          { name: "Boiled Eggs", portion: "2 whole eggs" },
-        ],
-        protein: "~22g",
-        prep: [
-          "Boil 1.5 cups water in a saucepan on medium flame.",
-          "Add 50g (½ cup) rolled oats. Stir continuously for 4–5 minutes until thick and creamy.",
-          "Remove from heat. Add 1 tsp honey and stir well.",
-          "Top with sliced banana (120g) and 1 tbsp chia seeds.",
-          "Eggs: Place 2 eggs in cold water, bring to boil, simmer 10 min, peel and eat with a pinch of cumin powder.",
-        ],
-      },
-      {
-        type: "lunch", label: "☀️ Lunch", time: "1:00 PM",
-        bg: "#e8f5e9", accent: "#43a047",
-        items: [
-          { name: "Cooked White Rice", portion: "150g cooked (¾ cup)" },
-          { name: "Moong Dal (cooked)", portion: "1 cup cooked (180g)" },
-          { name: "Carrot (steamed)", portion: "1 medium (80g)" },
-          { name: "Beans (steamed)", portion: "50g" },
-          { name: "Grilled Chicken Breast", portion: "100g raw (85g cooked)" },
-          { name: "Ghee", portion: "½ tsp on rice" },
-        ],
-        protein: "~42g",
-        prep: [
-          "Rice: Wash ¾ cup raw white rice 2–3 times until water runs clear. Cook in 1.5 cups water on low flame, covered, for 15 min. Fluff with fork.",
-          "Dal: Soak 50g moong dal 20 min. Pressure cook with 1.5 cups water + pinch turmeric + small ginger piece for 2 whistles. Simmer 5 min. Temper with ¼ tsp cumin seeds in ¼ tsp ghee.",
-          "Veggies: Steam sliced carrot and beans in steamer or covered pot for 8–10 min until tender.",
-          "Chicken: Marinate 100g breast in ¼ tsp turmeric + ¼ tsp cumin powder + ½ tsp ginger paste + ½ tsp oil for 15 min. Grill on non-stick pan 5–6 min each side on medium flame. Slice before serving.",
-          "Drizzle ½ tsp ghee on rice. Serve all together.",
-        ],
-      },
-      {
-        type: "snack", label: "🍎 Evening Snack", time: "4:30 PM",
-        bg: "#fff3e0", accent: "#fb8c00",
-        items: [
-          { name: "Banana", portion: "1 medium (120g)" },
-          { name: "Soaked Almonds", portion: "10 almonds (12g)" },
-          { name: "Low-fat Curd", portion: "100g (small bowl)" },
-        ],
-        protein: "~7g",
-        prep: [
-          "Soak 10 almonds in water the night before. Peel skin before eating — soaking reduces phytic acid, much easier on stomach.",
-          "Serve curd at room temperature (not straight from fridge) — cold curd can trigger gas and bloating.",
-          "Eat banana whole or sliced. This is a gut-soothing, high-potassium snack.",
-        ],
-      },
-      {
-        type: "dinner", label: "🌙 Dinner", time: "7:30 PM",
-        bg: "#e8eaf6", accent: "#5c6bc0",
-        items: [
-          { name: "Wheat Roti", portion: "2 rotis (60g dough each = 120g total)" },
-          { name: "Lauki (Bottle Gourd) Sabzi", portion: "200g bottle gourd (raw weight)" },
-          { name: "Cucumber Raita", portion: "100g curd + 50g cucumber" },
-          { name: "Low-fat Paneer", portion: "60g" },
-        ],
-        protein: "~24g",
-        prep: [
-          "Roti: Knead 120g whole wheat flour with water into soft dough. Rest 10 min. Roll thin (2–3mm). Cook on hot tawa 1.5 min each side on high flame. Apply ¼ tsp ghee.",
-          "Lauki Sabzi: Peel and cube 200g bottle gourd. Heat ½ tsp oil in pan, add ¼ tsp cumin seeds. Add lauki + pinch turmeric + pinch coriander powder. Cover and cook on low flame 12–15 min until completely soft. No chilli.",
-          "Raita: Grate 50g cucumber, squeeze lightly. Beat 100g curd smooth. Mix cucumber into curd. Add ¼ tsp roasted cumin powder + pinch salt.",
-          "Paneer Bhurji: Crumble 60g low-fat paneer. Sauté in ¼ tsp oil with pinch turmeric + chopped coriander leaves for 3 min on low flame. No onion, no chilli.",
-        ],
-      },
-    ],
+    breakfast: {
+      name: "Oats Porridge with Banana & Boiled Eggs",
+      portions: "50g oats (½ cup dry) · 1 medium banana · 1 tsp honey · 2 whole eggs",
+      protein: "2 Boiled Eggs",
+      prep: [
+        "Boil 1.5 cups water. Add 50g rolled oats, stir on low flame for 4–5 min until thick.",
+        "Add ½ tsp honey and top with 1 sliced banana. Do NOT add sugar.",
+        "Separately, place 2 eggs in cold water, bring to boil, cook 10 min, cool and peel.",
+        "Eat oats first, then eggs. Drink 1 glass warm water 20 min before breakfast.",
+      ],
+      note: "Oats coat the stomach lining — ideal first meal for gastritis.",
+    },
+    lunch: {
+      name: "Steamed Rice + Moong Dal + Sabzi + Grilled Chicken",
+      portions: "1 cup cooked rice (200g) · ½ cup moong dal cooked · 1 cup sabzi · 120g chicken breast",
+      protein: "120g Grilled Chicken Breast",
+      prep: [
+        "Rice: Wash 80g raw rice 2–3 times. Add 1.5 cups water, cook on low flame 15 min. Fluff with fork.",
+        "Moong Dal: Wash 50g moong dal. Pressure cook with 1.5 cups water, pinch turmeric, for 3 whistles. Add cumin tadka in ½ tsp ghee.",
+        "Sabzi (Carrot & Beans): Chop 1 medium carrot + 10–12 beans. Steam for 8 min. Season with ¼ tsp cumin, salt, ½ tsp ghee.",
+        "Chicken: Marinate 120g breast with ginger paste, salt, turmeric 30 min. Grill on tawa with ½ tsp oil each side, 5–6 min per side on medium flame.",
+      ],
+      note: "Avoid adding tomatoes or tamarind to dal — both are acidic.",
+    },
+    snack: {
+      name: "Banana + Soaked Almonds + Curd",
+      portions: "1 medium banana · 10 almonds (soaked overnight) · 100g low-fat curd",
+      protein: "100g Low-fat Curd",
+      prep: [
+        "Soak 10 almonds in water the previous night. Peel skins before eating — easier on stomach.",
+        "Take 100g fresh curd (not sour). Eat at room temperature, not cold from fridge.",
+        "Eat banana first, then almonds, then curd. Do not mix into a bowl.",
+      ],
+      note: "Soaked almonds are more alkaline than raw and gentler on the gut.",
+    },
+    dinner: {
+      name: "Multigrain Roti + Lauki Sabzi + Cucumber Raita + Egg",
+      portions: "2 rotis (60g flour total) · 200g lauki · 1 medium cucumber · 100g curd · 1 boiled egg",
+      protein: "1 Boiled Egg",
+      prep: [
+        "Roti: Knead 60g multigrain atta with water into soft dough. Roll medium-thin. Cook on hot tawa 1 min per side, apply ¼ tsp ghee.",
+        "Lauki Sabzi: Peel and cube 200g bottle gourd. Heat ½ tsp ghee, add cumin seeds, add lauki, salt, ¼ tsp turmeric. Cook covered on low flame 12–15 min until tender.",
+        "Raita: Grate 1 cucumber, mix into 100g curd. Add roasted cumin powder, salt. No chilli.",
+        "Boil 1 egg 10 min. Slice and eat alongside meal.",
+      ],
+      note: "Eat dinner by 7:30 PM — lauki is one of the most alkaline vegetables.",
+    },
   },
   {
     day: "Tuesday",
-    kcal: "~1800",
-    meals: [
-      {
-        type: "breakfast", label: "🌅 Breakfast", time: "7:00 AM",
-        bg: "#fffde7", accent: "#f9a825",
-        items: [
-          { name: "Vegetable Daliya", portion: "60g broken wheat (dry)" },
-          { name: "Mixed Vegetables", portion: "100g (carrot, peas, beans)" },
-          { name: "Ghee", portion: "1 tsp (5g)" },
-          { name: "Egg Whites (scrambled)", portion: "3 egg whites" },
-        ],
-        protein: "~18g",
-        prep: [
-          "Dry roast 60g broken wheat (daliya) in pan on medium flame for 3–4 min until golden and nutty-smelling. Set aside.",
-          "Heat 1 tsp ghee. Add ¼ tsp cumin seeds. Add 100g diced vegetables (carrot, peas, beans). Sauté 2 min.",
-          "Add roasted daliya + 1.5 cups water + pinch turmeric. Stir once. Cover, cook on low flame 12–15 min.",
-          "Egg Whites: Separate whites from 3 eggs. Beat lightly. Heat ¼ tsp oil in non-stick pan. Pour whites + pinch turmeric. Scramble gently 3 min on low heat until set.",
-        ],
-      },
-      {
-        type: "lunch", label: "☀️ Lunch", time: "1:00 PM",
-        bg: "#e8f5e9", accent: "#43a047",
-        items: [
-          { name: "Khichdi (Rice + Moong Dal)", portion: "¼ cup raw rice (45g) + ¼ cup moong dal (50g)" },
-          { name: "Ghee", portion: "1 tsp on khichdi" },
-          { name: "Steamed Fish (Rohu/Pomfret)", portion: "120g raw" },
-        ],
-        protein: "~38g",
-        prep: [
-          "Khichdi: Wash rice and moong dal together thoroughly. Add to pressure cooker with 2 cups water + pinch turmeric + ½ tsp cumin seeds + 1 small ginger piece.",
-          "Pressure cook 3 whistles. Let steam release naturally (10 min). Open, mix well — it should be soft and porridge-like. Add 1 tsp ghee.",
-          "Fish Steaming: Clean 120g rohu/pomfret. Apply ¼ tsp turmeric + ¼ tsp coriander powder + ½ tsp ginger paste + pinch salt.",
-          "Place fish in steamer basket over boiling water. Cover and steam 12–15 min until flesh flakes easily when pressed. Do NOT fry — steaming is critical for gastritis.",
-        ],
-      },
-      {
-        type: "snack", label: "🍎 Evening Snack", time: "4:30 PM",
-        bg: "#fff3e0", accent: "#fb8c00",
-        items: [
-          { name: "Watermelon", portion: "200g (roughly 2 medium slices)" },
-          { name: "Walnuts", portion: "4 whole walnuts (14g)" },
-        ],
-        protein: "~4g",
-        prep: [
-          "Cut watermelon fresh. Eat at room temperature — cold fruit from fridge can shock the stomach lining and slow digestion.",
-          "Eat 4 walnuts as-is. If you have an active gastritis flare-up today, swap walnuts for 10 soaked almonds instead — gentler option.",
-        ],
-      },
-      {
-        type: "dinner", label: "🌙 Dinner", time: "7:30 PM",
-        bg: "#e8eaf6", accent: "#5c6bc0",
-        items: [
-          { name: "Wheat Roti", portion: "2 rotis (120g dough)" },
-          { name: "Ridge Gourd (Turai) Sabzi", portion: "200g raw ridge gourd" },
-          { name: "Moong Dal Soup", portion: "1 cup thin dal (180ml)" },
-          { name: "Boiled Egg", portion: "1 whole egg" },
-        ],
-        protein: "~18g",
-        prep: [
-          "Ridge Gourd Sabzi: Peel and slice 200g turai (ridge gourd). Heat ½ tsp oil + ¼ tsp cumin seeds. Add turai + pinch turmeric + pinch coriander powder. Cover and cook 10 min on low — turai releases its own water, so no need to add water.",
-          "Dal Soup: Boil 3 tbsp moong dal in 1.5 cups water with ginger and turmeric. Do not thicken — serve as thin, clear soup. Add a pinch of cumin powder.",
-          "Roti: Same method as Monday — 2 thin wheat rotis.",
-          "Boil 1 egg for 10 min. Peel, slice, sprinkle pinch of cumin powder.",
-        ],
-      },
-    ],
+    isVeg: false,
+    kcal: "~1820",
+    breakfast: {
+      name: "Vegetable Daliya (Broken Wheat Porridge) + Egg Whites",
+      portions: "50g daliya (broken wheat) · ½ cup mixed veg (carrot, peas) · 1 tsp ghee · 3 egg whites",
+      protein: "3 Egg Whites (Scrambled)",
+      prep: [
+        "Dry roast 50g daliya in a pan 2–3 min on medium flame until light golden and fragrant.",
+        "Add 1.5 cups water, ½ cup chopped carrot + peas, ¼ tsp cumin, salt. Cook covered 15 min on low flame, stirring occasionally.",
+        "Add 1 tsp ghee at the end. Daliya should be soft — not watery, not dry.",
+        "Egg whites: Separate 3 eggs. Whisk whites with salt. Cook in non-stick pan with ¼ tsp oil, stir gently on low flame 2–3 min.",
+      ],
+      note: "Daliya is slower to digest than oats — keeps you full till lunch.",
+    },
+    lunch: {
+      name: "Moong Dal Khichdi + Steamed Fish",
+      portions: "60g rice + 40g moong dal (combined) · 150g fish (rohu/pomfret) · 1 tsp ghee",
+      protein: "150g Steamed Rohu / Pomfret",
+      prep: [
+        "Khichdi: Wash 60g rice + 40g yellow moong dal together. Pressure cook with 2.5 cups water, ¼ tsp turmeric, pinch asafoetida, salt — 4 whistles. Should be soft and mushy. Add 1 tsp ghee.",
+        "Fish: Clean 150g fish. Apply ginger paste + salt + ¼ tsp turmeric. Place in a steamer or idli vessel. Steam 12–15 min until flesh flakes easily.",
+        "Do NOT fry fish. Steaming preserves omega-3 and avoids added acidity from oil.",
+      ],
+      note: "Khichdi + steamed fish is the most gut-healing combination in this plan.",
+    },
+    snack: {
+      name: "Watermelon + Walnuts + Buttermilk",
+      portions: "200g watermelon (2 medium slices) · 4 walnut halves · 200ml plain buttermilk",
+      protein: "200ml Plain Buttermilk (Chaas)",
+      prep: [
+        "Cut fresh watermelon — avoid pre-cut stored fruit.",
+        "Buttermilk: Whisk 3 tbsp curd in 200ml water until smooth. Add roasted cumin powder + salt. No chilli.",
+        "Eat watermelon, then walnuts, then sip buttermilk slowly.",
+      ],
+      note: "Watermelon is 92% water and deeply alkaline — perfect for gastritis.",
+    },
+    dinner: {
+      name: "Multigrain Roti + Ridge Gourd Sabzi + Moong Soup",
+      portions: "2 rotis (60g flour) · 200g ridge gourd · ½ cup moong dal soup",
+      protein: "½ cup Moong Dal Soup",
+      prep: [
+        "Roti: Same as Monday. 60g multigrain atta, roll thin, cook on tawa, ¼ tsp ghee.",
+        "Ridge Gourd (Turai): Peel and slice 200g turai. Heat ½ tsp ghee, add cumin, ginger, add turai, salt, ¼ tsp turmeric. Cook uncovered 10 min — it releases water naturally.",
+        "Moong Soup: Boil ½ cup cooked moong dal with 1 cup water, ¼ tsp cumin, salt. Stir well. Drink as a clear soup.",
+      ],
+      note: "Keep this dinner under 400 kcal. Ridge gourd is extremely easy to digest.",
+    },
   },
   {
     day: "Wednesday",
-    kcal: "~1820",
-    meals: [
-      {
-        type: "breakfast", label: "🌅 Breakfast", time: "7:00 AM",
-        bg: "#fffde7", accent: "#f9a825",
-        items: [
-          { name: "Curd Rice", portion: "¾ cup cooked white rice (150g) + 100g curd" },
-          { name: "Grated Carrot", portion: "50g" },
-          { name: "Boiled Eggs", portion: "2 whole eggs" },
-        ],
-        protein: "~20g",
-        prep: [
-          "Cook white rice slightly softer than normal (extra ¼ cup water) — overcooked rice is much easier to digest.",
-          "Let rice cool to room temperature (important — hot rice added to curd makes it sour quickly).",
-          "Beat 100g fresh curd smooth. Mix into cooled rice. Consistency should be creamy, not watery.",
-          "Top with 50g grated carrot. Season with ¼ tsp roasted cumin powder + pinch salt. Serve immediately.",
-          "Boil 2 eggs (10 min). Peel and eat alongside curd rice.",
-        ],
-      },
-      {
-        type: "lunch", label: "☀️ Lunch", time: "1:00 PM",
-        bg: "#e8f5e9", accent: "#43a047",
-        items: [
-          { name: "Cooked White Rice", portion: "150g cooked" },
-          { name: "Toor Dal (cooked)", portion: "1 cup cooked (180g)" },
-          { name: "Drumstick Sabzi", portion: "150g drumstick pieces" },
-          { name: "Grilled Chicken Breast", portion: "100g" },
-        ],
-        protein: "~44g",
-        prep: [
-          "Toor Dal: Pressure cook 60g toor dal + 1.5 cups water + ¼ tsp turmeric + ½ tsp ginger (grated) for 3 whistles. Temper with ½ tsp ghee + cumin seeds. Simmer 5 min.",
-          "Drumstick Sabzi: Boil 150g drumstick pieces in 1 cup water for 10 min until tender. Drain. Heat ½ tsp oil + ¼ tsp cumin seeds in pan. Add drumstick + pinch turmeric + ¼ tsp coriander powder. Stir-fry 5 min. No chilli.",
-          "Chicken: Same as Monday — marinate 100g breast, grill 5–6 min each side on medium flame.",
-          "Cook white rice normally (wash, 1:1.5 rice-to-water ratio, cook 15 min covered on low).",
-        ],
-      },
-      {
-        type: "snack", label: "🍎 Evening Snack", time: "4:30 PM",
-        bg: "#fff3e0", accent: "#fb8c00",
-        items: [
-          { name: "Apple", portion: "1 medium (150g)" },
-          { name: "Natural Peanut Butter", portion: "1 tbsp (16g)" },
-          { name: "Warm Milk (low-fat)", portion: "150ml" },
-        ],
-        protein: "~9g",
-        prep: [
-          "Wash and slice apple into wedges. Do NOT peel — the skin contains pectin fibre that soothes the gut lining.",
-          "Use natural peanut butter (ingredients should say only: peanuts + salt). Avoid brands with added sugar or palm oil.",
-          "Warm milk to about 60°C (comfortably hot, not scalding). Drink slowly. Warm milk neutralises stomach acid effectively.",
-        ],
-      },
-      {
-        type: "dinner", label: "🌙 Dinner", time: "7:30 PM",
-        bg: "#e8eaf6", accent: "#5c6bc0",
-        items: [
-          { name: "Wheat Roti", portion: "2 rotis (120g dough)" },
-          { name: "Ash Gourd (Winter Melon) Sabzi", portion: "200g ash gourd" },
-          { name: "Moong Dal Soup", portion: "1 cup (180ml)" },
-          { name: "Tofu Scramble", portion: "80g firm tofu" },
-        ],
-        protein: "~20g",
-        prep: [
-          "Ash Gourd Sabzi: Peel, deseed and cube 200g ash gourd. Heat ½ tsp oil + ¼ tsp cumin seeds. Add ash gourd + pinch turmeric + pinch coriander powder + 2 tbsp water. Cover and cook 15 min on low flame. Ash gourd is one of the most alkaline vegetables — excellent for gastritis.",
-          "Tofu Scramble: Pat 80g firm tofu completely dry with a cloth. Crumble roughly. Heat ¼ tsp oil in pan. Add tofu + pinch turmeric + ¼ tsp cumin powder. Stir-fry 5 min on medium flame until slightly golden. Add fresh coriander. No chilli.",
-          "Dal Soup: Thin moong dal with turmeric and ginger. 1 cup, served hot.",
-          "Rotis: Same wheat roti method — 2 thin rotis with ¼ tsp ghee each.",
-        ],
-      },
-    ],
+    isVeg: false,
+    kcal: "~1840",
+    breakfast: {
+      name: "Curd Rice + Boiled Eggs",
+      portions: "1 cup cooked rice (200g) · 150g low-fat curd · ¼ tsp mustard seeds · 2 boiled eggs",
+      protein: "2 Boiled Eggs",
+      prep: [
+        "Cook rice as usual. Let it cool to room temperature (not fridge-cold).",
+        "Mash 200g cooked rice lightly with a fork. Mix in 150g fresh curd and salt.",
+        "Tempering: Heat ½ tsp ghee, add ¼ tsp mustard seeds. Let them splutter. Pour over curd rice. Add grated carrot on top.",
+        "Boil 2 eggs 10 min separately. Eat alongside curd rice.",
+      ],
+      note: "Curd rice is probiotic — actively repairs the stomach lining.",
+    },
+    lunch: {
+      name: "Steamed Rice + Toor Dal + Drumstick Sabzi + Grilled Chicken",
+      portions: "1 cup cooked rice (200g) · ½ cup toor dal · 1 cup drumstick sabzi · 120g chicken breast",
+      protein: "120g Grilled Chicken Breast",
+      prep: [
+        "Rice: 80g raw rice, wash 3x, cook with 1.5 cups water 15 min on low flame.",
+        "Toor Dal: Wash 50g toor dal. Pressure cook 3 whistles with 1.5 cups water + turmeric. Temper with ½ tsp ghee + cumin. NO tomato.",
+        "Drumstick Sabzi: Cut 2 drumsticks into 3-inch pieces. Boil in water 10 min until soft. Drain. Stir fry in ½ tsp oil with cumin, salt, ¼ tsp turmeric for 3 min.",
+        "Chicken: Same as Monday prep — marinate with ginger+salt+turmeric, grill on tawa 5–6 min per side.",
+      ],
+      note: "Drumstick (murungakkai) is anti-inflammatory and great for gut health.",
+    },
+    snack: {
+      name: "Apple + Warm Milk",
+      portions: "1 medium apple (150g) · 200ml warm low-fat milk",
+      protein: "200ml Warm Low-fat Milk",
+      prep: [
+        "Wash apple thoroughly. Eat with skin — the pectin in skin is a prebiotic.",
+        "Warm milk: Heat 200ml low-fat milk to just below boiling. Add a pinch of turmeric (golden milk). No sugar.",
+        "Eat apple first, wait 10 min, then drink milk.",
+      ],
+      note: "Warm milk buffers stomach acid. Never drink cold milk — it causes rebound acidity.",
+    },
+    dinner: {
+      name: "Multigrain Roti + Ash Gourd Sabzi + Egg Bhurji",
+      portions: "2 rotis (60g flour) · 200g ash gourd (winter melon) · 1 whole egg + 1 white",
+      protein: "1 Egg + 1 Egg White Bhurji",
+      prep: [
+        "Roti: Standard prep — 60g multigrain atta, soft dough, roll and cook on tawa.",
+        "Ash Gourd: Peel and cube 200g. Heat ½ tsp ghee, add cumin + grated ginger. Add ash gourd + salt + ¼ tsp turmeric. Cook covered 15 min on low flame. Very soft when done.",
+        "Egg Bhurji: Whisk 1 whole egg + 1 white. Heat non-stick pan, add ¼ tsp oil. Pour eggs. Add salt, ¼ tsp cumin powder. Stir gently on low flame 2–3 min. Do NOT add chilli.",
+      ],
+      note: "Ash gourd is deeply alkaline — one of the best vegetables for gastritis sufferers.",
+    },
   },
   {
     day: "Thursday",
-    kcal: "~1800",
-    meals: [
-      {
-        type: "breakfast", label: "🌅 Breakfast", time: "7:00 AM",
-        bg: "#fffde7", accent: "#f9a825",
-        items: [
-          { name: "Banana", portion: "1 medium (120g)" },
-          { name: "Low-fat Milk", portion: "200ml" },
-          { name: "Rolled Oats", portion: "30g (3 tbsp)" },
-          { name: "Boiled Eggs", portion: "2 whole eggs" },
-        ],
-        protein: "~22g",
-        prep: [
-          "Banana Smoothie: Peel and break 1 banana into blender. Add 200ml chilled or room-temperature low-fat milk + 30g rolled oats.",
-          "Blend 45 seconds until smooth. Do NOT add citrus juice, sugar, or protein powder. Drink immediately — oats thicken fast.",
-          "Boil 2 eggs separately for 10 min. Eat alongside smoothie.",
-          "This is ideal pre-workout breakfast — light, energising, sits well in the stomach during running.",
-        ],
-      },
-      {
-        type: "lunch", label: "☀️ Lunch", time: "1:00 PM",
-        bg: "#e8f5e9", accent: "#43a047",
-        items: [
-          { name: "Vegetable Pulao", portion: "¾ cup raw white rice (135g) + 100g vegetables" },
-          { name: "Boondi Raita", portion: "100g curd + 20g plain boondi" },
-          { name: "Egg Curry (light)", portion: "2 whole eggs in thin gravy" },
-        ],
-        protein: "~26g",
-        prep: [
-          "Pulao: Heat ½ tsp ghee in pot. Add 1 tsp cumin seeds + 1 bay leaf. Add 100g diced vegetables (carrot, peas, beans). Sauté 2 min. Add washed rice + 1.5 cups water + ¼ tsp turmeric + pinch salt. Cover, cook on low 15 min.",
-          "Boondi Raita: Beat 100g curd smooth with a fork. Add 20g plain (un-spiced) boondi. Add ¼ tsp roasted cumin powder. Let boondi soak and soften 5 min before eating.",
-          "Egg Curry (Light): Hard boil 2 eggs (10 min). Peel, make 3 small slits each. In pan: heat ½ tsp oil + ¼ tsp cumin seeds + 1 tsp ginger paste. Add ¼ tsp turmeric + 1 tsp coriander powder. Add ½ cup water to make thin, brothy gravy. Add eggs. Simmer 5 min. No red chilli, no tomato.",
-        ],
-      },
-      {
-        type: "snack", label: "🍎 Evening Snack", time: "4:30 PM",
-        bg: "#fff3e0", accent: "#fb8c00",
-        items: [
-          { name: "Papaya (ripe)", portion: "150g (1 cup cubed)" },
-          { name: "Roasted Makhana", portion: "30g (about 1 cup puffed)" },
-        ],
-        protein: "~5g",
-        prep: [
-          "Papaya: Peel, deseed, cube ripe papaya into bite-sized pieces. Eat at room temperature. Papain enzyme in papaya actively breaks down proteins and soothes stomach lining — eat this as often as possible.",
-          "Makhana: Dry roast in pan on low flame 5–6 min, stirring constantly until they turn crisp and make a hollow sound when tapped. Add pinch of rock salt + ¼ tsp cumin powder. Store excess in airtight box for up to 1 week.",
-        ],
-      },
-      {
-        type: "dinner", label: "🌙 Dinner", time: "7:30 PM",
-        bg: "#e8eaf6", accent: "#5c6bc0",
-        items: [
-          { name: "Wheat Roti", portion: "2 rotis (120g dough)" },
-          { name: "Palak (Spinach) Sabzi", portion: "150g fresh spinach leaves" },
-          { name: "Moong Dal", portion: "¾ cup cooked" },
-          { name: "Grilled Fish", portion: "100g rohu or pomfret" },
-        ],
-        protein: "~36g",
-        prep: [
-          "Palak Sabzi: Blanch 150g spinach in boiling water for 2 min. Drain immediately, press out water. Heat ½ tsp oil + ¼ tsp cumin seeds + 1 tsp ginger paste. Add blanched spinach + pinch turmeric. Stir-fry 3 min. Keep simple — no cream, no heavy spice, no garlic excess.",
-          "Fish: Marinate 100g fish with ¼ tsp turmeric + ¼ tsp coriander powder + ½ tsp ginger paste + pinch salt. Grill on non-stick pan with ¼ tsp oil, 5–6 min each side on medium flame.",
-          "Dal: Moong dal same as usual — pressure cook 2 whistles, temper with cumin.",
-          "Rotis: 2 thin wheat rotis with ¼ tsp ghee.",
-        ],
-      },
-    ],
+    isVeg: false,
+    kcal: "~1850",
+    breakfast: {
+      name: "Banana Oat Smoothie + Boiled Eggs",
+      portions: "1 large banana · 30g oats · 200ml low-fat milk · 2 boiled eggs",
+      protein: "2 Boiled Eggs",
+      prep: [
+        "Blend 1 ripe banana + 30g rolled oats + 200ml low-fat milk until completely smooth. No citrus, no seeds.",
+        "Pour into a glass and drink slowly — do not gulp.",
+        "Boil 2 eggs separately (10 min), eat alongside smoothie.",
+        "Do not add protein powder — commercial powders are often acidic.",
+      ],
+      note: "Banana is one of the few alkaline fruits that coats the stomach lining.",
+    },
+    lunch: {
+      name: "Jeera Rice + Chana Dal + 2-Egg Curry",
+      portions: "1 cup cooked jeera rice (200g) · ½ cup chana dal · 2 eggs (light curry)",
+      protein: "2-Egg Light Curry",
+      prep: [
+        "Jeera Rice: Cook 80g raw rice. In a pan, heat ½ tsp ghee, add 1 tsp cumin seeds, let splutter. Add cooked rice + salt, toss 2 min.",
+        "Chana Dal: Soak 50g chana dal 2 hours. Pressure cook 4 whistles with 1.5 cups water + turmeric. Temper with ½ tsp ghee + cumin. No tomato.",
+        "Egg Curry: Boil 2 eggs, peel. In a pan, heat ½ tsp oil, add ½ tsp cumin, 1 tsp ginger paste, ¼ tsp turmeric, salt. Add ½ cup water, bring to simmer. Add halved boiled eggs. Simmer 5 min on low flame. No red chilli.",
+      ],
+      note: "Chana dal needs soaking — without it, it causes bloating and gas.",
+    },
+    snack: {
+      name: "Papaya + Roasted Peanuts + Buttermilk",
+      portions: "150g papaya (1 cup cubed) · 20g roasted peanuts (1 small handful) · 150ml buttermilk",
+      protein: "20g Roasted Peanuts + Buttermilk",
+      prep: [
+        "Cut 150g ripe papaya. Remove seeds. Eat as is — no salt or lime on papaya.",
+        "Peanuts: Dry roast 20g raw peanuts on tawa 5 min, tossing frequently. Allow to cool. Remove loose skins.",
+        "Buttermilk: Whisk 3 tbsp curd in 150ml water. Add cumin powder + salt only.",
+      ],
+      note: "Papaya contains papain enzyme — a natural gut-healer and fat digestion aid.",
+    },
+    dinner: {
+      name: "Multigrain Roti + Palak Sabzi + Grilled Fish",
+      portions: "2 rotis (60g flour) · 150g spinach leaves · 130g fish (surmai/pomfret)",
+      protein: "130g Grilled Surmai / Pomfret",
+      prep: [
+        "Roti: Standard 60g multigrain atta prep.",
+        "Palak Sabzi: Wash 150g spinach. Blanch in boiling water 2 min, drain. Roughly chop. Heat ½ tsp ghee, add garlic (just 1 small clove, optional), add spinach, salt, ¼ tsp cumin powder. Stir fry 3 min.",
+        "Fish: Marinate 130g fish with ginger paste, salt, ¼ tsp turmeric, 1 tsp lemon juice (just a few drops — minimal). Grill on tawa with ½ tsp oil, 4–5 min per side on medium flame.",
+      ],
+      note: "Grill fish on medium — not high heat. Charring increases acidity.",
+    },
   },
   {
     day: "Friday",
+    isVeg: false,
     kcal: "~1870",
-    meals: [
-      {
-        type: "breakfast", label: "🌅 Breakfast", time: "7:00 AM",
-        bg: "#fffde7", accent: "#f9a825",
-        items: [
-          { name: "Poha (Thick Flattened Rice)", portion: "60g dry weight" },
-          { name: "Green Peas", portion: "30g" },
-          { name: "Carrot (small dice)", portion: "40g" },
-          { name: "Boiled Eggs", portion: "2 whole eggs" },
-        ],
-        protein: "~18g",
-        prep: [
-          "Wash 60g thick poha in a strainer under running water for 30 seconds. Drain. Let sit 3–4 min until softened but not mushy. Do not over-soak.",
-          "Heat ½ tsp oil in pan. Add ¼ tsp mustard seeds (optional — skip if you get bloating). Add ¼ tsp turmeric.",
-          "Add peas and diced carrot. Stir-fry 3 min until slightly cooked.",
-          "Add softened poha + pinch salt. Toss gently (don't stir hard — poha will break). Cook 2–3 min on low flame.",
-          "Garnish with fresh coriander leaves. No green chilli, no lemon juice.",
-          "Boil 2 eggs (10 min). Serve alongside.",
-        ],
-      },
-      {
-        type: "lunch", label: "☀️ Lunch", time: "1:00 PM",
-        bg: "#e8f5e9", accent: "#43a047",
-        items: [
-          { name: "Cooked White Rice", portion: "150g cooked" },
-          { name: "Rajma (Kidney Beans)", portion: "80g dry (soaked) → ~200g cooked" },
-          { name: "Steamed Broccoli", portion: "100g" },
-          { name: "Baked Paneer Tikka", portion: "80g low-fat paneer" },
-        ],
-        protein: "~38g",
-        prep: [
-          "Rajma: Soak 80g dry rajma in water overnight (minimum 8 hrs). Discard soaking water. Pressure cook with fresh water + 1 ginger piece + pinch turmeric for 6–7 whistles until very soft (no hard centres). In pan: heat ½ tsp oil + ¼ tsp cumin seeds + 1 tsp ginger paste + ¼ tsp coriander powder. Add cooked rajma + ½ cup water. Simmer 10 min. No tomato, no chilli.",
-          "Broccoli: Cut into small florets. Steam 8 min or microwave with 2 tbsp water covered for 4 min. Sprinkle ¼ tsp cumin powder + pinch salt.",
-          "Paneer Tikka (Baked): Cut 80g low-fat paneer into cubes. Mix marinade: 2 tbsp curd + ¼ tsp cumin + ¼ tsp turmeric + ¼ tsp coriander powder + pinch salt. Coat paneer evenly. Marinate 20 min. Place on greased baking tray. Bake at 200°C for 15 min OR cook on non-stick pan with ¼ tsp oil for 2–3 min each side until golden.",
-        ],
-      },
-      {
-        type: "snack", label: "🍎 Evening Snack", time: "4:30 PM",
-        bg: "#fff3e0", accent: "#fb8c00",
-        items: [
-          { name: "Cucumber", portion: "1 medium (150g), sliced" },
-          { name: "Hummus", portion: "3 tbsp (45g)" },
-          { name: "Plain Buttermilk (Chaas)", portion: "200ml" },
-        ],
-        protein: "~7g",
-        prep: [
-          "Slice cucumber into rounds or batons. Cucumber is one of the most alkaline vegetables — it actively cools and soothes the stomach lining.",
-          "Hummus (Gastritis-safe version): Blend 100g well-cooked chickpeas + 1 tbsp tahini + 1 tsp olive oil + 3 tbsp water until smooth. No lemon juice, no raw garlic (both trigger acid). Add pinch cumin instead.",
-          "Chaas: Whisk 50g fresh curd + 150ml water until smooth. Add ¼ tsp roasted cumin powder. Drink slowly. This is a probiotic, cooling, acid-neutralising drink.",
-        ],
-      },
-      {
-        type: "dinner", label: "🌙 Dinner", time: "7:30 PM",
-        bg: "#e8eaf6", accent: "#5c6bc0",
-        items: [
-          { name: "Wheat Roti", portion: "2 rotis (120g dough)" },
-          { name: "Tinda (Apple Gourd) Sabzi", portion: "200g tinda" },
-          { name: "Moong Dal Soup", portion: "1 cup (180ml)" },
-          { name: "Light Chicken Soup", portion: "150ml broth + 60g shredded chicken" },
-        ],
-        protein: "~22g",
-        prep: [
-          "Tinda Sabzi: Peel and quarter 200g tinda (apple gourd). Heat ½ tsp oil + ¼ tsp cumin seeds. Add tinda + ¼ tsp turmeric + ¼ tsp coriander powder + 2 tbsp water. Cover and cook 12–15 min on low flame until completely soft.",
-          "Chicken Soup: Boil 80g bone-in chicken pieces in 2 cups water + 2 ginger slices + ¼ tsp turmeric for 25 min on medium flame. Strain broth. Shred chicken off the bone. Drink the broth (150ml) and eat shredded chicken. Bone broth is gut-healing.",
-          "Dal Soup + Rotis: Thin moong dal (1 cup). 2 wheat rotis same as previous days.",
-        ],
-      },
-    ],
+    breakfast: {
+      name: "Vegetable Poha + Boiled Eggs",
+      portions: "60g thick poha (flattened rice) · ½ cup mixed veg (peas, carrot) · 2 boiled eggs",
+      protein: "2 Boiled Eggs",
+      prep: [
+        "Wash 60g thick poha in a strainer under running water 30 sec. Drain and let sit 5 min — it softens naturally.",
+        "Heat ½ tsp oil in pan. Add ¼ tsp mustard seeds + cumin. Add ½ cup peas + carrot, cook 3 min.",
+        "Add soaked poha + salt + ¼ tsp turmeric. Mix gently. Cover and cook on low 3–4 min. No chilli. Garnish with coriander.",
+        "Boil 2 eggs 10 min separately and eat alongside.",
+      ],
+      note: "Use THICK poha — thin poha becomes mushy and harder to digest.",
+    },
+    lunch: {
+      name: "Steamed Rice + Masoor Dal + Steamed Broccoli + Grilled Chicken",
+      portions: "1 cup cooked rice (200g) · ½ cup masoor dal · 1 cup broccoli · 120g chicken breast",
+      protein: "120g Grilled Chicken Breast",
+      prep: [
+        "Rice: 80g raw, wash 3x, cook with 1.5 cups water 15 min.",
+        "Masoor Dal (Red Lentils): Wash 50g masoor dal (no soaking needed). Pressure cook 2 whistles with 1.5 cups water + turmeric. Temper with ½ tsp ghee + cumin. No tomato.",
+        "Broccoli: Cut 1 cup florets. Steam 7–8 min until bright green and tender. Season with salt + ¼ tsp ghee.",
+        "Chicken: Standard marinade (ginger+salt+turmeric). Grill 5–6 min per side on tawa.",
+      ],
+      note: "Masoor dal is the quickest-cooking and easiest lentil to digest.",
+    },
+    snack: {
+      name: "Cucumber + Hummus (Homemade) + Chaas",
+      portions: "1 medium cucumber (150g) · 3 tbsp homemade hummus · 200ml plain chaas",
+      protein: "Hummus (chickpea-based) + Chaas",
+      prep: [
+        "Hummus: Soak 50g chickpeas overnight. Boil until very soft (30–40 min). Blend with 1 tsp tahini (or just sesame paste), ½ tsp cumin, salt, 1 tsp olive oil. Add water for consistency. NO lemon/garlic if sensitive.",
+        "Slice cucumber into sticks. Dip in hummus.",
+        "Chaas: Whisk 3 tbsp curd in 200ml water. Add cumin + salt. No chilli.",
+      ],
+      note: "Make hummus at home — store-bought versions often contain preservatives and vinegar.",
+    },
+    dinner: {
+      name: "Multigrain Roti + Tinda Sabzi + Chicken Soup",
+      portions: "2 rotis (60g flour) · 200g tinda (apple gourd) · 1 bowl chicken soup (150ml)",
+      protein: "150ml Clear Chicken Soup",
+      prep: [
+        "Roti: Standard prep — 60g multigrain atta.",
+        "Tinda Sabzi: Peel and cube 200g tinda. Heat ½ tsp ghee, add cumin, ginger. Add tinda + salt + ¼ tsp turmeric. Cover and cook 12–15 min low flame until soft.",
+        "Chicken Soup: Boil 80g chicken pieces (with bone = more collagen) in 400ml water with ginger slice + salt + cumin for 25–30 min. Strain and drink the clear broth. Eat the soft chicken pieces.",
+      ],
+      note: "Bone broth chicken soup is gut-healing — the collagen repairs stomach lining.",
+    },
   },
   {
     day: "Saturday",
-    kcal: "~1850",
-    meals: [
-      {
-        type: "breakfast", label: "🌅 Breakfast", time: "7:00 AM",
-        bg: "#fffde7", accent: "#f9a825",
-        items: [
-          { name: "Idli", portion: "3 medium idlis (~150g total)" },
-          { name: "Coconut Chutney (mild)", portion: "3 tbsp (45g)" },
-          { name: "Sambhar", portion: "½ cup (120ml)" },
-        ],
-        protein: "~10g",
-        prep: [
-          "Idli (from batter): Grease idli moulds lightly with ¼ tsp oil. Pour fermented batter ¾ full into each mould. Steam on high flame for 10–12 min. Test with toothpick — should come out clean. Let sit 2 min before unmoulding.",
-          "Coconut Chutney (No-chilli): Blend 3 tbsp fresh grated coconut + 1 tbsp roasted chana dal + 1 small ginger piece + pinch salt + 3 tbsp water until smooth. Temper with ¼ tsp oil + ¼ tsp mustard seeds + curry leaves. No green chilli.",
-          "Sambhar: Pressure cook ¼ cup toor dal (2 whistles). Add drumstick or carrot pieces + ¼ tsp sambhar powder (mild variety) + pinch turmeric. Simmer 10 min. No tamarind — use tiny pinch of amchur (dry mango powder) if sourness is needed.",
-        ],
-      },
-      {
-        type: "lunch", label: "☀️ Lunch", time: "1:00 PM",
-        bg: "#e8f5e9", accent: "#43a047",
-        items: [
-          { name: "Cooked White Rice", portion: "150g cooked" },
-          { name: "Mild Fish Curry (coconut-based)", portion: "120g fish + ½ cup coconut gravy" },
-          { name: "Stir-fried Tofu with Capsicum", portion: "80g tofu + 60g capsicum" },
-        ],
-        protein: "~40g",
-        prep: [
-          "Coconut Fish Curry: Blend 3 tbsp fresh grated coconut + ½ cup water into thin coconut milk. In pan: heat ½ tsp coconut oil + ¼ tsp cumin seeds + 1 tsp ginger paste + ¼ tsp turmeric + ¼ tsp coriander powder. Add coconut milk. Bring to gentle simmer. Add 120g fish pieces (rohu/pomfret). Cook on low flame 12–15 min until fish is cooked through. No tamarind, no red chilli — use curry leaves only for flavour.",
-          "Tofu Stir-fry: Pat 80g firm tofu completely dry, cut into thin strips. Heat ½ tsp oil in pan on high. Add 60g sliced capsicum, stir-fry 2 min. Add tofu + ¼ tsp turmeric + ¼ tsp cumin powder. Stir-fry 5 min until tofu is golden. Add coriander leaves.",
-          "Cook white rice normally. Serve all three together.",
-        ],
-      },
-      {
-        type: "snack", label: "🍎 Evening Snack", time: "4:30 PM",
-        bg: "#fff3e0", accent: "#fb8c00",
-        items: [
-          { name: "Pear", portion: "1 medium (150g)" },
-          { name: "Cashews", portion: "10–12 cashews (15g)" },
-          { name: "Low-fat Curd", portion: "100g" },
-        ],
-        protein: "~8g",
-        prep: [
-          "Wash and slice pear. Eat with skin — pear skin contains pectin, a soluble fibre that is particularly gentle on and protective of the gut lining.",
-          "Eat 10–12 cashews raw or dry-roasted (no oil, no salt). Do not exceed 12 in one sitting — larger quantities can cause bloating.",
-          "Curd at room temperature. Stir in a pinch of roasted cumin powder.",
-        ],
-      },
-      {
-        type: "dinner", label: "🌙 Dinner", time: "7:30 PM",
-        bg: "#e8eaf6", accent: "#5c6bc0",
-        items: [
-          { name: "Wheat Roti", portion: "2 rotis (120g dough)" },
-          { name: "Lauki Kofta (Baked)", portion: "3 koftas from 200g lauki" },
-          { name: "Moong Dal", portion: "¾ cup cooked" },
-          { name: "Egg Bhurji", portion: "1 whole egg" },
-        ],
-        protein: "~22g",
-        prep: [
-          "Lauki Kofta (Baked — NOT fried): Grate 200g bottle gourd. Squeeze out ALL excess water using a cloth. Mix grated lauki + 2 tbsp besan (chickpea flour) + ¼ tsp cumin powder + ¼ tsp turmeric + pinch salt. Dough should be firm. Shape into 3 round balls. Brush lightly with oil. Bake at 180°C for 20 min, turning at 10 min, until golden. Serve with dal as gravy.",
-          "Egg Bhurji: Beat 1 egg with a fork. Heat ¼ tsp oil in non-stick pan. Pour egg. Scramble gently with spatula for 2–3 min on low flame. Add pinch turmeric + fresh coriander. No chilli, no onion.",
-          "Dal + Rotis: Moong dal cooked same as usual. 2 thin wheat rotis.",
-        ],
-      },
-    ],
+    isVeg: true,
+    kcal: "~1780",
+    breakfast: {
+      name: "Idli + Coconut Chutney + Sambar",
+      portions: "3 medium idlis (~180g) · 3 tbsp coconut chutney · ½ cup mild sambar",
+      protein: "Sambar (lentil-based)",
+      prep: [
+        "Use store-bought idli batter or ferment your own (urad dal + rice, soak 6 hrs, grind, ferment 8 hrs).",
+        "Pour batter into greased idli moulds. Steam in idli pot 10–12 min. Toothpick should come out clean.",
+        "Coconut Chutney: Blend 3 tbsp grated coconut + ¼ tsp cumin + salt + small piece ginger + water. No green chilli.",
+        "Sambar: Boil ½ cup toor dal (pressure cooked). Add drumstick/carrot, ¼ tsp sambar powder (mild), salt. Simmer 10 min. No tamarind if acid-sensitive.",
+      ],
+      note: "Fermented idli batter is probiotic — the best Saturday breakfast for gut healing.",
+    },
+    lunch: {
+      name: "Steamed Rice + Coconut-based Mild Vegetable Curry + Moong Dal",
+      portions: "1 cup cooked rice (200g) · 1 cup mixed veg curry · ½ cup moong dal",
+      protein: "½ cup Moong Dal",
+      prep: [
+        "Rice: 80g raw, wash 3x, cook 15 min.",
+        "Coconut Veg Curry: Chop 200g mixed veg (carrot, beans, potato). Cook in ½ cup coconut milk + 1 cup water + ¼ tsp cumin + salt on low flame 15 min. Coconut milk is alkaline and gut-soothing.",
+        "Moong Dal: Pressure cook 50g moong dal, 3 whistles. Temper with ½ tsp ghee + cumin.",
+      ],
+      note: "Saturday is your full rest-for-the-gut day — no non-veg, no heavy proteins.",
+    },
+    snack: {
+      name: "Pear + Cashews + Curd",
+      portions: "1 medium pear (150g) · 10–12 cashews · 100g low-fat curd",
+      protein: "100g Low-fat Curd",
+      prep: [
+        "Wash and slice pear. Eat with skin — the skin contains gut-friendly prebiotics.",
+        "Cashews: Raw or lightly dry-roasted (no salt, no oil). Limit to 10–12 pieces.",
+        "Curd: At room temperature. Add a pinch of roasted cumin powder if desired.",
+      ],
+      note: "Pear is one of the highest-fibre fruits and very gentle on the stomach.",
+    },
+    dinner: {
+      name: "Multigrain Roti + Mixed Vegetable Sabzi + Moong Dal Soup + Curd",
+      portions: "2 rotis (60g flour) · 1.5 cups mixed sabzi · ½ cup dal soup · 100g curd",
+      protein: "Moong Dal + Curd",
+      prep: [
+        "Roti: 60g multigrain atta, standard prep.",
+        "Mixed Sabzi: Chop 100g each of pumpkin + carrot + green beans. Heat ½ tsp ghee, add cumin + ginger. Add vegetables, ¼ tsp turmeric, salt. Cover and cook 15 min on low flame.",
+        "Moong Dal Soup: Cook ½ cup moong dal with 1.5 cups water, salt, cumin. Stir well into a thin soup consistency.",
+        "Curd: Eat at room temperature as the final component of the meal.",
+      ],
+      note: "Saturday dinner: lightest meal of the week. Prepares your gut for Sunday.",
+    },
   },
   {
     day: "Sunday",
+    isVeg: false,
     kcal: "~1900",
-    meals: [
-      {
-        type: "breakfast", label: "🌅 Breakfast", time: "7:00 AM",
-        bg: "#fffde7", accent: "#f9a825",
-        items: [
-          { name: "Upma (Semolina)", portion: "60g rava (dry)" },
-          { name: "Mixed Vegetables", portion: "100g (carrot, peas, beans)" },
-          { name: "Ghee", portion: "1 tsp" },
-          { name: "Boiled Eggs", portion: "2 whole eggs" },
-        ],
-        protein: "~18g",
-        prep: [
-          "Dry roast 60g rava (semolina) in a pan on medium flame for 3–4 min, stirring constantly, until it turns light golden and aromatic. Remove and set aside.",
-          "Heat 1 tsp ghee in same pan. Add ¼ tsp mustard seeds + curry leaves. Add 100g diced vegetables. Sauté 2 min.",
-          "Add 1.5 cups boiling water carefully (splatters — keep face away). Immediately add roasted rava while stirring continuously to prevent lumps.",
-          "Reduce flame to low. Cook 5–6 min until water is absorbed and upma holds shape. Cover and rest 2 min. Fluff gently.",
-          "Boil 2 eggs (10 min). Serve alongside.",
-        ],
-      },
-      {
-        type: "lunch", label: "☀️ Lunch", time: "1:00 PM",
-        bg: "#e8f5e9", accent: "#43a047",
-        items: [
-          { name: "Jeera (Cumin) Rice", portion: "¾ cup raw white rice (135g)" },
-          { name: "Dal Makhani (light version)", portion: "1 cup cooked (180g)" },
-          { name: "Steamed Mixed Vegetables", portion: "100g" },
-          { name: "Grilled Chicken Breast", portion: "100g" },
-        ],
-        protein: "~45g",
-        prep: [
-          "Jeera Rice: Heat ½ tsp ghee in pot. Add 1 tsp cumin seeds — let splutter 30 sec. Add washed white rice + 1.5 cups water + pinch salt. Cover, cook on low flame 15 min. Fluff with fork.",
-          "Dal Makhani (Light): Soak 60g whole black urad dal overnight. Pressure cook with fresh water for 8–10 whistles until completely soft and creamy. In pan: heat ½ tsp butter (or ghee) + 1 tsp ginger paste. Add cooked dal + ¼ tsp coriander powder + pinch turmeric + 1 tbsp fresh cream only (vs traditional ¼ cup). Simmer 10 min. Keep spice minimal — this is Sunday's slight treat.",
-          "Steamed Vegetables: 100g mixed (lauki, carrot, beans). Steam 10 min. Add pinch cumin.",
-          "Grill 100g chicken breast same as Monday method.",
-        ],
-      },
-      {
-        type: "snack", label: "🍎 Evening Snack", time: "4:30 PM",
-        bg: "#fff3e0", accent: "#fb8c00",
-        items: [
-          { name: "Banana", portion: "1 medium (120g)" },
-          { name: "Homemade Oat Cookies", portion: "2 small cookies (~40g)" },
-          { name: "Warm Milk (low-fat)", portion: "150ml" },
-        ],
-        protein: "~9g",
-        prep: [
-          "Oat Cookies (make in batch — Sunday prep): Mash 2 ripe bananas in a bowl. Mix in 200g rolled oats + 2 tbsp honey + ¼ tsp cinnamon powder. No sugar, no maida, no butter.",
-          "Shape into small round discs (1 tbsp each) on greased baking tray. Bake at 170°C for 12–15 min until golden at edges. Makes ~16 cookies. Store in airtight container up to 4 days.",
-          "Warm milk to 60°C. Drink slowly alongside 2 cookies and banana.",
-        ],
-      },
-      {
-        type: "dinner", label: "🌙 Dinner", time: "7:30 PM",
-        bg: "#e8eaf6", accent: "#5c6bc0",
-        items: [
-          { name: "Wheat Roti", portion: "2 rotis (120g dough)" },
-          { name: "Mix Veg Sabzi (mild)", portion: "200g mixed veg" },
-          { name: "Low-fat Curd", portion: "100g" },
-          { name: "Low-fat Paneer", portion: "60g" },
-        ],
-        protein: "~22g",
-        prep: [
-          "Mix Veg Sabzi: Dice 200g mixed vegetables (lauki, carrot, beans, 1 small potato). Heat ½ tsp oil + ¼ tsp cumin seeds. Add vegetables + ¼ tsp turmeric + ¼ tsp coriander powder + 3 tbsp water. Cover and cook 15 min on low until all vegetables are soft.",
-          "Cube 60g paneer. Lightly pan-cook in ½ tsp oil for 2 min each side until just golden. Add to sabzi in last 2 min.",
-          "Serve with 100g fresh curd (room temperature) and 2 thin wheat rotis.",
-          "End the week light — this is an easy, comforting, balanced dinner.",
-        ],
-      },
-    ],
+    breakfast: {
+      name: "Vegetable Upma + Boiled Eggs",
+      portions: "60g semolina (rava) · ½ cup mixed veg · 1 tsp ghee · 2 boiled eggs",
+      protein: "2 Boiled Eggs",
+      prep: [
+        "Dry roast 60g rava in a pan on medium flame 3–4 min, stirring constantly, until light golden. Set aside.",
+        "In same pan, heat 1 tsp ghee. Add mustard seeds. Once they splutter, add ½ cup chopped carrot + peas + beans. Sauté 3 min.",
+        "Add 1.5 cups boiling water + salt. Let it come to boil. Slowly pour roasted rava while stirring to avoid lumps. Cover and cook 4–5 min on low flame.",
+        "Boil 2 eggs 10 min separately. Eat alongside upma.",
+      ],
+      note: "Always roast rava first — raw rava is heavy and acidic on the stomach.",
+    },
+    lunch: {
+      name: "Jeera Rice + Toor Dal + Steamed Vegetables + Grilled Chicken",
+      portions: "1 cup jeera rice (200g cooked) · ½ cup toor dal · 1 cup steamed veg · 120g chicken",
+      protein: "120g Grilled Chicken Breast",
+      prep: [
+        "Jeera Rice: Cook 80g rice. Heat ½ tsp ghee, add 1 tsp cumin seeds, let splutter. Toss cooked rice in this for 2 min with salt.",
+        "Toor Dal: Pressure cook 50g toor dal 3 whistles. No tomato. Temper with ½ tsp ghee + cumin + pinch hing.",
+        "Steamed Veg: Steam 1 cup of broccoli + carrot + zucchini 8 min. Season with salt + ghee.",
+        "Chicken: Marinate 120g breast with ginger+salt+turmeric 30 min. Grill on tawa, 5–6 min per side. Rest 5 min before eating.",
+      ],
+      note: "Sunday's biggest meal — enjoy it! Portion control matters more than restriction.",
+    },
+    snack: {
+      name: "Banana + Homemade Oat Biscuits + Warm Milk",
+      portions: "1 banana · 2 oat biscuits (homemade) · 150ml warm milk",
+      protein: "150ml Warm Milk",
+      prep: [
+        "Oat Biscuits: Mix 60g oats + 1 tsp honey + 1 tsp ghee + pinch of cinnamon + 2 tbsp milk into a stiff dough. Shape into flat rounds. Bake at 170°C for 15–18 min until golden.",
+        "Warm milk: Heat 150ml low-fat milk, add tiny pinch of turmeric.",
+        "Eat banana → biscuits → sip warm milk slowly.",
+      ],
+      note: "Bake oat biscuits in batches on Sunday — store in airtight box for the week.",
+    },
+    dinner: {
+      name: "Multigrain Roti + Pumpkin Sabzi + Masoor Dal + Curd",
+      portions: "2 rotis (60g flour) · 200g pumpkin · ½ cup masoor dal · 100g curd",
+      protein: "Masoor Dal + Curd",
+      prep: [
+        "Roti: 60g multigrain atta, standard prep.",
+        "Pumpkin Sabzi: Peel and cube 200g yellow pumpkin. Heat ½ tsp ghee, add cumin + ginger. Add pumpkin + salt + ¼ tsp turmeric. Cover and cook 15 min until soft and slightly mushy.",
+        "Masoor Dal: Wash 50g masoor dal, pressure cook 2 whistles. Temper with ½ tsp ghee + cumin. No tomato.",
+        "Curd at room temperature as a side.",
+      ],
+      note: "End your week with a light, easy dinner. Pumpkin is deeply alkaline and anti-inflammatory.",
+    },
   },
 ];
 
 const safeVsAvoid = {
   safe: [
-    { icon: "🥣", item: "Oats, daliya, poha, idli, upma, rava" },
-    { icon: "🍌", item: "Banana, papaya, watermelon, pear, apple" },
-    { icon: "🥦", item: "Bottle gourd, ridge gourd, ash gourd, carrot, tinda" },
-    { icon: "🍳", item: "Boiled / poached / scrambled eggs (minimal oil)" },
-    { icon: "🐟", item: "Steamed / grilled fish — rohu, pomfret, surmai" },
-    { icon: "🍗", item: "Grilled chicken breast — no skin, minimal spice" },
-    { icon: "🧆", item: "Low-fat paneer — baked or lightly cooked" },
-    { icon: "🫘", item: "Moong dal, toor dal — well-cooked and soft" },
-    { icon: "🍚", item: "White rice (well-cooked), wheat roti, multigrain roti" },
-    { icon: "🥛", item: "Low-fat curd, warm milk, plain buttermilk (chaas)" },
-    { icon: "🌿", item: "Cumin, turmeric, coriander powder, ginger, curry leaves" },
-    { icon: "🫚", item: "Ghee (1 tsp/day), cold-pressed coconut oil (small qty)" },
+    { icon: "🥣", item: "Oats, daliya, poha (thick), idli, upma, semolina" },
+    { icon: "🍌", item: "Banana, papaya, watermelon, pear, apple (with skin)" },
+    { icon: "🥦", item: "Lauki, turai, ash gourd, pumpkin, tinda, carrot, beans, broccoli" },
+    { icon: "🍳", item: "Boiled / poached / scrambled eggs (no frying)" },
+    { icon: "🐟", item: "Steamed / grilled fish — rohu, pomfret, surmai, king fish" },
+    { icon: "🍗", item: "Grilled chicken breast (no skin, no charring)" },
+    { icon: "🫘", item: "Moong dal, toor dal, masoor dal, chana dal (soaked)" },
+    { icon: "🍚", item: "Normal white rice (cooked soft), multigrain roti" },
+    { icon: "🥛", item: "Low-fat curd (room temp), plain buttermilk, warm milk" },
+    { icon: "🥥", item: "Coconut milk, coconut chutney (no chilli)" },
+    { icon: "🌿", item: "Cumin, turmeric, ginger, coriander, mustard seeds, hing" },
+    { icon: "🫚", item: "Ghee (1 tsp/meal max), cold-pressed coconut oil" },
   ],
   avoid: [
-    { icon: "🌶️", item: "Green chillies, red chilli powder, pepper, hot sauces" },
-    { icon: "🍋", item: "Citrus — lemon, orange, pineapple, amla juice" },
-    { icon: "☕", item: "Coffee, strong black tea on empty stomach" },
-    { icon: "🥤", item: "Carbonated drinks, sodas, energy drinks, packaged juices" },
+    { icon: "🌶️", item: "Green chillies, red chilli powder, hot sauces, pepper (excess)" },
+    { icon: "🍋", item: "Citrus fruits — lemon, orange, pineapple, grapes" },
+    { icon: "☕", item: "Coffee, strong black tea — especially on empty stomach" },
+    { icon: "🧀", item: "Paneer, tofu, rajma, dal makhani — heavy / slow-digesting" },
+    { icon: "🥤", item: "Carbonated drinks, colas, energy drinks" },
     { icon: "🍟", item: "Deep-fried foods — samosa, pakoda, puri, chips" },
-    { icon: "🍫", item: "Chocolate, mint — relax lower esophageal sphincter" },
-    { icon: "🧅", item: "Raw onion and raw garlic in large amounts" },
-    { icon: "🍅", item: "Tomato-heavy curries, sauces, ketchup, rasam" },
-    { icon: "🍷", item: "Alcohol — highly corrosive to gastric lining" },
-    { icon: "🧈", item: "Excess butter, heavy cream, full-fat dairy" },
-    { icon: "🍞", item: "Maida — bread, pasta, naan, biscuits, bakery items" },
-    { icon: "🥗", item: "Pickles, vinegar dressings, tamarind-heavy chutneys" },
+    { icon: "🍅", item: "Tomatoes, tamarind, raw onion in excess — highly acidic" },
+    { icon: "🍫", item: "Chocolate, mint — relax the lower esophageal sphincter" },
+    { icon: "🍷", item: "Alcohol — severely irritates the stomach lining" },
+    { icon: "🧈", item: "Butter, cream, full-fat dairy, ghee excess (>2 tsp/day)" },
+    { icon: "🍞", item: "Maida (refined flour) — bread, naan, biscuits, pasta" },
+    { icon: "🥗", item: "Pickles, vinegar dressings, achaar, store-bought chutneys" },
   ],
 };
 
 const timingTips = [
   {
-    icon: "⏰", title: "Pre-Workout (60–90 min before)", color: "#e8f5e9", border: "#66bb6a",
+    icon: "⏰", title: "Pre-Workout — 60–90 Min Before",
+    color: "#e8f5e9", border: "#43a047",
     tips: [
-      "Eat banana (120g) + 2 boiled eggs — light, protein-rich, does not trigger acidity.",
-      "Avoid high-fat meals, spicy foods, or heavy carbs right before your treadmill run.",
-      "Sip 200–300ml water 30 min before workout. Do not over-hydrate — causes sloshing and reflux while running.",
+      "Have a small, easily digestible meal: 1 banana + 2 boiled eggs OR oats porridge (50g).",
+      "Avoid any high-fat or high-fibre meal right before the treadmill — delays digestion and causes bloating mid-run.",
+      "Drink 250ml warm water 20 min before eating. Sip 200ml water between meal and workout — do not gulp.",
     ],
   },
   {
-    icon: "🏃", title: "During Workout", color: "#e3f2fd", border: "#42a5f5",
+    icon: "🏃", title: "During Workout — Treadmill + Resistance",
+    color: "#e3f2fd", border: "#1e88e5",
     tips: [
-      "Take small sips of plain water every 15–20 minutes. Avoid gulping large amounts at once.",
-      "Do NOT eat anything mid-workout — it triggers acid reflux, especially on a treadmill.",
-      "Keep upright posture throughout — slouching compresses the stomach and worsens reflux.",
+      "Small sips of plain water every 15–20 min. Carry a 500ml bottle and finish it during the session.",
+      "Never eat anything mid-workout — even a banana mid-run triggers reflux while your body is in motion.",
+      "On the treadmill, maintain upright posture. Hunching over compresses the stomach and worsens acid splash.",
     ],
   },
   {
-    icon: "🍽️", title: "Post-Workout (within 30–45 min)", color: "#fff3e0", border: "#ffa726",
+    icon: "🍽️", title: "Post-Workout Window — Within 30–45 Min",
+    color: "#fff3e0", border: "#fb8c00",
     tips: [
-      "Most important meal of the day — have curd (100g) + banana OR 2 boiled eggs + 1 roti immediately.",
-      "This is the best window for protein absorption. Do not skip or delay this meal.",
-      "Avoid lying down for at least 60 minutes after eating post-workout.",
+      "THIS is your most important meal. Eat within 45 min of finishing: grilled chicken (120g) + rice (1 cup) + dal is ideal.",
+      "Your muscles are insulin-sensitive post-workout — protein absorption is 30–40% higher. Don't skip this.",
+      "Sit upright for at least 1 hour after eating. Do not lie down directly after the post-workout meal.",
     ],
   },
   {
-    icon: "🌙", title: "Dinner Timing (Critical for Gastritis)", color: "#f3e5f5", border: "#ab47bc",
+    icon: "🌙", title: "Dinner — Critical Rule for Gastritis",
+    color: "#f3e5f5", border: "#8e24aa",
     tips: [
-      "Eat dinner at least 2–3 hours before sleeping — ideally done by 7:30 PM.",
-      "Keep dinner light — maximum 2 rotis, soupy dal, steamed vegetables.",
-      "No heavy protein (large non-veg portions, rajma) at night — hard to digest lying down and causes reflux.",
+      "Target dinner time: 7:00–7:30 PM. Absolute latest: 8:00 PM. Sleep should be at 10:00–10:30 PM.",
+      "Keep dinner under 400 kcal — 2 rotis + sabzi + dal soup + curd. No heavy proteins at night.",
+      "Elevate your head slightly while sleeping (use an extra pillow) — this physically prevents acid reflux at night.",
     ],
   },
 ];
 
 const proteinOptions = {
   veg: [
-    { name: "Low-fat Paneer", amount: "100g = ~18g protein", tip: "Bake or grill — never deep fry" },
-    { name: "Moong Dal (cooked)", amount: "1 cup = ~14g protein", tip: "Easiest lentil on the stomach" },
-    { name: "Tofu (firm)", amount: "100g = ~8g protein", tip: "Pat dry before cooking — stir-fry with minimal spice" },
-    { name: "Low-fat Curd", amount: "200g = ~8g protein", tip: "Probiotic — eat at room temperature" },
-    { name: "Boiled Chickpeas", amount: "100g = ~9g protein", tip: "Soak 8 hrs, cook until very soft — undercooked = bloating" },
-    { name: "Makhana (Fox Nuts)", amount: "30g = ~4g protein", tip: "Alkaline snack — always dry roast before eating" },
-    { name: "Low-fat Warm Milk", amount: "300ml = ~10g protein", tip: "Warm only — cold milk can trigger rebound acidity" },
-    { name: "Chia Seeds", amount: "2 tbsp = ~4g protein", tip: "Add to oats or smoothie — soak 10 min first" },
+    { name: "Moong Dal (cooked)", amount: "1 cup = ~14g", tip: "Easiest lentil on the stomach. Best for dinner dal." },
+    { name: "Toor Dal (cooked)", amount: "1 cup = ~11g", tip: "Use for lunch dal. No tomato tempering." },
+    { name: "Masoor Dal (cooked)", amount: "1 cup = ~13g", tip: "Fastest cooking. Great for quick dinner dal." },
+    { name: "Chana Dal (cooked)", amount: "1 cup = ~13g", tip: "Soak 2–3 hours first. Rich, fills you up." },
+    { name: "Chickpea Hummus", amount: "3 tbsp = ~6g", tip: "Homemade only. Spread on roti or dip cucumber." },
+    { name: "Low-fat Curd", amount: "200g = ~8g", tip: "Room temp. Probiotic. Best after meals." },
+    { name: "Warm Low-fat Milk", amount: "300ml = ~10g", tip: "Warm only. Add turmeric. Never cold milk." },
+    { name: "Soaked Almonds", amount: "10 almonds = ~3g", tip: "Peel skin after soaking. Alkaline + gut-safe." },
+    { name: "Roasted Peanuts", amount: "20g = ~5g", tip: "Dry roast — no oil, no salt. Good snack protein." },
+    { name: "Cashews (raw)", amount: "10 pieces = ~3g", tip: "Lower acid than other nuts. Max 10–12/day." },
   ],
   nonVeg: [
-    { name: "Chicken Breast (grilled)", amount: "100g = ~31g protein", tip: "Highest protein, lowest fat — grill, never fry" },
-    { name: "Egg Whites (boiled/scrambled)", amount: "3 whites = ~11g protein", tip: "Zero fat — ultra digestible, safest for gastritis" },
-    { name: "Whole Egg (boiled)", amount: "1 egg = ~6g protein", tip: "Boiled is always better than fried for gastritis" },
-    { name: "Rohu Fish (steamed)", amount: "100g = ~20g protein", tip: "Freshwater fish — very light and easy to digest" },
-    { name: "Pomfret (grilled)", amount: "100g = ~22g protein", tip: "Grill with ginger + coriander + turmeric only" },
-    { name: "Chicken Soup (bone broth)", amount: "1 bowl = ~15g protein", tip: "Gut-healing collagen-rich broth — best on upset stomach days" },
-    { name: "Egg Bhurji (1 egg)", amount: "~6g protein", tip: "Minimal oil, no spice, add fresh coriander only" },
-    { name: "Fish Curry (coconut base)", amount: "100g = ~20g protein", tip: "Coconut milk is alkaline — always skip tamarind" },
+    { name: "Chicken Breast (grilled)", amount: "120g = ~37g", tip: "Highest protein. Always grill — never fry." },
+    { name: "Chicken Soup (bone broth)", amount: "1 bowl = ~15g", tip: "Collagen heals stomach lining. Best dinner protein." },
+    { name: "Whole Egg (boiled)", amount: "1 egg = ~6g", tip: "10 min boil. Safest cooking method for gastritis." },
+    { name: "Egg White (3 whites)", amount: "3 whites = ~11g", tip: "Zero fat. Great for breakfast scramble." },
+    { name: "Egg Bhurji (1 egg)", amount: "1 egg = ~6g", tip: "Non-stick pan, ¼ tsp oil, no chilli." },
+    { name: "Rohu Fish (steamed)", amount: "150g = ~25g", tip: "Steam or grill only. Light omega-3 fish." },
+    { name: "Pomfret (grilled)", amount: "150g = ~28g", tip: "Grill on medium flame with ginger+turmeric." },
+    { name: "Surmai / King Fish", amount: "130g = ~28g", tip: "Rich omega-3. Grill with ginger paste. No charring." },
   ],
 };
 
 export default function DietPlan() {
   const [activeDay, setActiveDay] = useState(0);
   const [activeTab, setActiveTab] = useState("plan");
-  const [expandedMeal, setExpandedMeal] = useState<string | null>(null);
+  const [expandedMeal, setExpandedMeal] = useState(null);
 
   const tabs = [
-    { id: "plan", label: "7-Day Plan" },
-    { id: "foods", label: "Safe vs Avoid" },
-    { id: "timing", label: "Meal Timing" },
-    { id: "protein", label: "Protein Guide" },
+    { id: "plan", label: "📅 7-Day Plan" },
+    { id: "foods", label: "🥗 Safe vs Avoid" },
+    { id: "timing", label: "⏰ Meal Timing" },
+    { id: "protein", label: "💪 Protein Guide" },
   ];
 
   const current = mealPlan[activeDay];
 
+  const mealSections = [
+    { key: "breakfast", label: "🌅 Breakfast", bg: "#fffde7", accent: "#f9a825" },
+    { key: "lunch", label: "☀️ Lunch", bg: "#e8f5e9", accent: "#43a047" },
+    { key: "snack", label: "🍎 Evening Snack", bg: "#fff3e0", accent: "#fb8c00" },
+    { key: "dinner", label: "🌙 Dinner", bg: "#ede7f6", accent: "#7e57c2" },
+  ];
+
   return (
-    <div style={{ minHeight: "100vh", background: "linear-gradient(160deg,#f0f7ee 0%,#fdf6ec 50%,#f0f4ff 100%)", fontFamily: "'Georgia','Times New Roman',serif", paddingBottom: 60 }}>
+    <div style={{
+      minHeight: "100vh",
+      background: "linear-gradient(160deg, #f0f7ee 0%, #fdf6ec 60%, #eef2f7 100%)",
+      fontFamily: "'Georgia', serif",
+      paddingBottom: 60,
+    }}>
       {/* Header */}
-      <div style={{ background: "linear-gradient(135deg,#1b4332 0%,#2d6a4f 60%,#40916c 100%)", color: "white", padding: "36px 24px 28px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 15% 50%,rgba(255,255,255,.06) 0%,transparent 55%),radial-gradient(circle at 85% 20%,rgba(255,255,255,.09) 0%,transparent 50%)" }} />
+      <div style={{
+        background: "linear-gradient(135deg, #1b4332 0%, #2d6a4f 60%, #40916c 100%)",
+        color: "white",
+        padding: "36px 20px 28px",
+        textAlign: "center",
+        position: "relative",
+        overflow: "hidden",
+      }}>
+        <div style={{ position: "absolute", inset: 0, backgroundImage: "radial-gradient(circle at 15% 50%, rgba(255,255,255,0.06) 0%, transparent 55%), radial-gradient(circle at 85% 20%, rgba(255,255,255,0.07) 0%, transparent 50%)" }} />
         <div style={{ position: "relative", zIndex: 1 }}>
-          <div style={{ fontSize: 10, letterSpacing: "4px", textTransform: "uppercase", color: "#95d5b2", marginBottom: 10 }}>Personalized Fat-Loss Plan · Gastritis-Safe</div>
-          <h1 style={{ margin: 0, fontSize: 28, fontWeight: "normal", letterSpacing: "-0.5px" }}>Gut-Friendly Diet Guide</h1>
-          <p style={{ margin: "10px 0 0", fontSize: 12, color: "#b7e4c7", fontStyle: "italic", fontFamily: "sans-serif" }}>Exact portions · Preparation steps · White rice · ~1800–1900 kcal/day</p>
-          <div style={{ display: "flex", justifyContent: "center", gap: 8, marginTop: 16, flexWrap: "wrap" }}>
-            {[["🏋️","100 kg"],["📏","180 cm"],["🚶","5 km/day"],["🫁","Gastritis-safe"],["🍚","White Rice"]].map(([icon,label])=>(
-              <div key={label} style={{ background:"rgba(255,255,255,.13)", padding:"4px 11px", borderRadius:20, fontSize:11, fontFamily:"sans-serif", border:"1px solid rgba(255,255,255,.2)" }}>{icon} {label}</div>
+          <div style={{ fontSize: 11, letterSpacing: "4px", color: "#95d5b2", textTransform: "uppercase", marginBottom: 8, fontFamily: "sans-serif" }}>
+            Personalized · Gastritis-Safe · Fat Loss
+          </div>
+          <h1 style={{ margin: 0, fontSize: 28, fontWeight: "normal", lineHeight: 1.2 }}>
+            Gut-Friendly Diet Plan
+          </h1>
+          <p style={{ margin: "10px 0 0", fontSize: 13, color: "#b7e4c7", fontStyle: "italic", fontFamily: "sans-serif" }}>
+            With exact portions & full preparation steps · ~1,800–1,900 kcal/day
+          </p>
+          <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "center", gap: 8, marginTop: 16 }}>
+            {[["🏋️","100 kg"], ["📏","180 cm"], ["🚶","5km/day"], ["🫁","Gastritis-safe"], ["🥩","Non-veg Mon–Fri,Sun"], ["🌿","Sat: Veg Only"]].map(([ic, lb]) => (
+              <span key={lb} style={{ background: "rgba(255,255,255,0.13)", border: "1px solid rgba(255,255,255,0.2)", borderRadius: 20, padding: "4px 12px", fontSize: 12, fontFamily: "sans-serif", color: "#d8f3dc" }}>{ic} {lb}</span>
             ))}
           </div>
         </div>
       </div>
 
       {/* Tabs */}
-      <div style={{ display:"flex", background:"white", boxShadow:"0 2px 12px rgba(0,0,0,.08)", position:"sticky", top:0, zIndex:10, overflowX:"auto" }}>
-        {tabs.map(tab=>(
-          <button key={tab.id} onClick={()=>setActiveTab(tab.id)} style={{ flex:1, minWidth:90, padding:"14px 8px", border:"none", background:activeTab===tab.id?"#1b4332":"white", color:activeTab===tab.id?"white":"#555", fontFamily:"sans-serif", fontSize:12, fontWeight:activeTab===tab.id?"700":"400", cursor:"pointer", borderBottom:activeTab===tab.id?"3px solid #1b4332":"3px solid transparent", transition:"all .2s", letterSpacing:".3px" }}>{tab.label}</button>
+      <div style={{ display: "flex", background: "#1b4332", position: "sticky", top: 0, zIndex: 10, overflowX: "auto" }}>
+        {tabs.map(t => (
+          <button key={t.id} onClick={() => setActiveTab(t.id)} style={{
+            flex: 1, minWidth: 80, padding: "13px 6px",
+            border: "none",
+            background: activeTab === t.id ? "#40916c" : "transparent",
+            color: activeTab === t.id ? "white" : "#95d5b2",
+            fontFamily: "sans-serif", fontSize: 12, fontWeight: activeTab === t.id ? "700" : "400",
+            cursor: "pointer", borderBottom: activeTab === t.id ? "3px solid #74c69d" : "3px solid transparent",
+            transition: "all 0.2s", whiteSpace: "nowrap",
+          }}>{t.label}</button>
         ))}
       </div>
 
-      <div style={{ maxWidth:820, margin:"0 auto", padding:"24px 16px" }}>
+      <div style={{ maxWidth: 820, margin: "0 auto", padding: "20px 14px" }}>
 
-        {/* 7-Day Plan */}
-        {activeTab==="plan" && (
+        {/* 7-DAY PLAN */}
+        {activeTab === "plan" && (
           <div>
-            <p style={{ fontFamily:"sans-serif", fontSize:12, color:"#888", margin:"0 0 14px", textAlign:"center" }}>Tap a day · Tap any meal to see exact portions & preparation steps</p>
-            <div style={{ display:"flex", gap:8, justifyContent:"center", flexWrap:"wrap", marginBottom:20 }}>
-              {mealPlan.map((d,i)=>(
-                <button key={i} onClick={()=>{ setActiveDay(i); setExpandedMeal(null); }} style={{ width:52, height:52, borderRadius:"50%", border:activeDay===i?"2px solid #1b4332":"2px solid #e0e0e0", background:activeDay===i?"#1b4332":"white", color:activeDay===i?"white":"#444", fontFamily:"sans-serif", fontSize:12, fontWeight:"700", cursor:"pointer", transition:"all .2s", boxShadow:activeDay===i?"0 4px 14px rgba(27,67,50,.35)":"none" }}>{days[i]}</button>
+            {/* Day Selector */}
+            <div style={{ display: "flex", gap: 8, justifyContent: "center", marginBottom: 20, flexWrap: "wrap" }}>
+              {mealPlan.map((d, i) => (
+                <button key={i} onClick={() => { setActiveDay(i); setExpandedMeal(null); }} style={{
+                  width: 54, height: 54, borderRadius: "50%",
+                  border: activeDay === i ? "2.5px solid #40916c" : "2px solid #ccc",
+                  background: activeDay === i ? "#1b4332" : d.isVeg ? "#f1f8e9" : "white",
+                  color: activeDay === i ? "white" : "#333",
+                  fontFamily: "sans-serif", fontSize: 12, fontWeight: "700",
+                  cursor: "pointer",
+                  boxShadow: activeDay === i ? "0 4px 14px rgba(27,67,50,0.35)" : "none",
+                  transition: "all 0.2s", position: "relative",
+                }}>
+                  {days[i]}
+                  {d.isVeg && <span style={{ position: "absolute", top: -3, right: -3, fontSize: 10, background: "#43a047", color: "white", borderRadius: "50%", width: 16, height: 16, display: "flex", alignItems: "center", justifyContent: "center" }}>🌿</span>}
+                </button>
               ))}
             </div>
 
-            <div style={{ background:"white", borderRadius:18, overflow:"hidden", boxShadow:"0 6px 28px rgba(0,0,0,.09)" }}>
-              <div style={{ background:"linear-gradient(135deg,#1b4332,#40916c)", padding:"16px 24px", display:"flex", justifyContent:"space-between", alignItems:"center" }}>
-                <div style={{ color:"white", fontSize:22 }}>{current.day}</div>
-                <div style={{ background:"rgba(255,255,255,.18)", color:"white", padding:"4px 12px", borderRadius:20, fontFamily:"sans-serif", fontSize:12 }}>{current.kcal} kcal</div>
+            {/* Day Header */}
+            <div style={{ background: "linear-gradient(135deg, #1b4332, #40916c)", borderRadius: "14px 14px 0 0", padding: "16px 22px", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <div>
+                <div style={{ color: "white", fontSize: 22, fontWeight: "normal" }}>{current.day}</div>
+                <div style={{ color: "#95d5b2", fontSize: 12, fontFamily: "sans-serif", marginTop: 2 }}>
+                  {current.isVeg ? "🌿 Fully Vegetarian Day" : "🥩 Non-Veg Included"}
+                </div>
               </div>
+              <div style={{ background: "rgba(255,255,255,0.18)", color: "white", padding: "6px 14px", borderRadius: 20, fontFamily: "sans-serif", fontSize: 13, fontWeight: "600" }}>
+                {current.kcal} kcal
+              </div>
+            </div>
 
-              {current.meals.map((meal,mi)=>{
-                const isOpen = expandedMeal===`${activeDay}-${mi}`;
-                return (
-                  <div key={mi} style={{ borderBottom:mi<current.meals.length-1?"1px solid #f0f0f0":"none" }}>
-                    <div style={{ padding:"16px 18px", background:meal.bg+"44" }}>
-                      {/* Meal label row */}
-                      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", marginBottom:10 }}>
-                        <div>
-                          <div style={{ fontFamily:"sans-serif", fontSize:10, fontWeight:"800", color:meal.accent, letterSpacing:"1.5px", textTransform:"uppercase", marginBottom:3 }}>{meal.label}</div>
-                          <div style={{ fontFamily:"sans-serif", fontSize:11, color:"#aaa" }}>{meal.time}</div>
-                        </div>
-                        <div style={{ background:meal.accent+"22", color:meal.accent, padding:"4px 10px", borderRadius:20, fontFamily:"sans-serif", fontSize:11, fontWeight:"700", border:`1px solid ${meal.accent}44` }}>Protein: {meal.protein}</div>
-                      </div>
-
-                      {/* Portions table */}
-                      <div style={{ background:"white", borderRadius:10, overflow:"hidden", marginBottom:10, border:"1px solid #f0f0f0" }}>
-                        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", padding:"7px 12px", background:"#f9f9f9", borderBottom:"1px solid #f0f0f0" }}>
-                          <div style={{ fontFamily:"sans-serif", fontSize:10, fontWeight:"700", color:"#888", textTransform:"uppercase", letterSpacing:".8px" }}>Item</div>
-                          <div style={{ fontFamily:"sans-serif", fontSize:10, fontWeight:"700", color:"#888", textTransform:"uppercase", letterSpacing:".8px" }}>Exact Portion</div>
-                        </div>
-                        {meal.items.map((item,ii)=>(
-                          <div key={ii} style={{ display:"grid", gridTemplateColumns:"1fr 1fr", padding:"9px 12px", background:ii%2===0?"white":"#fcfcfc", borderBottom:ii<meal.items.length-1?"1px solid #f5f5f5":"none" }}>
-                            <div style={{ fontFamily:"sans-serif", fontSize:13, color:"#333", fontWeight:"500" }}>{item.name}</div>
-                            <div style={{ fontFamily:"sans-serif", fontSize:12, color:meal.accent, fontWeight:"700" }}>{item.portion}</div>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Toggle button */}
-                      <button onClick={()=>setExpandedMeal(isOpen?null:`${activeDay}-${mi}`)} style={{ width:"100%", padding:"10px 14px", background:isOpen?meal.accent:"white", color:isOpen?"white":meal.accent, border:`1.5px solid ${meal.accent}`, borderRadius:8, fontFamily:"sans-serif", fontSize:12, fontWeight:"700", cursor:"pointer", transition:"all .2s", display:"flex", alignItems:"center", justifyContent:"center", gap:6 }}>
-                        {isOpen?"▲ Hide Preparation Steps":"▼ Show Step-by-Step Preparation"}
-                      </button>
-
-                      {/* Prep steps */}
-                      {isOpen && (
-                        <div style={{ marginTop:12, background:"white", borderRadius:10, padding:"14px 16px", border:`1.5px solid ${meal.accent}33` }}>
-                          <div style={{ fontFamily:"sans-serif", fontSize:10, fontWeight:"800", color:meal.accent, letterSpacing:"1.5px", textTransform:"uppercase", marginBottom:12 }}>👨‍🍳 Step-by-Step Preparation</div>
-                          {meal.prep.map((step,si)=>(
-                            <div key={si} style={{ display:"flex", gap:12, marginBottom:si<meal.prep.length-1?10:0, alignItems:"flex-start" }}>
-                              <div style={{ background:meal.accent, color:"white", width:22, height:22, borderRadius:"50%", fontFamily:"sans-serif", fontSize:11, fontWeight:"700", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0, marginTop:1 }}>{si+1}</div>
-                              <div style={{ fontFamily:"sans-serif", fontSize:13, color:"#444", lineHeight:1.6 }}>{step}</div>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+            {/* Meals */}
+            {mealSections.map(({ key, label, bg, accent }) => {
+              const meal = current[key];
+              const isOpen = expandedMeal === key;
+              return (
+                <div key={key} style={{ background: "white", borderBottom: "1px solid #eee" }}>
+                  <div style={{ padding: "18px 22px", background: bg + "66", borderLeft: `4px solid ${accent}` }}>
+                    <div style={{ fontFamily: "sans-serif", fontSize: 11, fontWeight: "800", color: accent, letterSpacing: "1.5px", textTransform: "uppercase", marginBottom: 8 }}>{label}</div>
+                    <div style={{ fontSize: 15, color: "#1a1a1a", marginBottom: 6, lineHeight: 1.4 }}><strong>{meal.name}</strong></div>
+                    <div style={{ fontFamily: "sans-serif", fontSize: 12, color: "#666", marginBottom: 8, lineHeight: 1.6 }}>
+                      <span style={{ fontWeight: "700", color: "#333" }}>📊 Portions: </span>{meal.portions}
                     </div>
+                    <div style={{ fontFamily: "sans-serif", fontSize: 12, color: "#2d6a4f", fontWeight: "700", marginBottom: 10 }}>
+                      💪 Protein Source: {meal.protein}
+                    </div>
+                    <button onClick={() => setExpandedMeal(isOpen ? null : key)} style={{
+                      background: isOpen ? accent : "white",
+                      color: isOpen ? "white" : accent,
+                      border: `1.5px solid ${accent}`,
+                      borderRadius: 20, padding: "6px 16px",
+                      fontFamily: "sans-serif", fontSize: 12, fontWeight: "600",
+                      cursor: "pointer", transition: "all 0.2s",
+                    }}>
+                      {isOpen ? "▲ Hide Preparation" : "▼ View Step-by-Step Preparation"}
+                    </button>
                   </div>
-                );
-              })}
+
+                  {isOpen && (
+                    <div style={{ padding: "18px 22px", background: "#fafafa", borderLeft: `4px solid ${accent}` }}>
+                      <div style={{ fontFamily: "sans-serif", fontSize: 12, fontWeight: "800", color: "#333", letterSpacing: "1px", textTransform: "uppercase", marginBottom: 12 }}>
+                        🍳 Preparation Steps
+                      </div>
+                      {meal.prep.map((step, si) => (
+                        <div key={si} style={{ display: "flex", gap: 12, marginBottom: 12, alignItems: "flex-start" }}>
+                          <div style={{ width: 24, height: 24, borderRadius: "50%", background: accent, color: "white", fontFamily: "sans-serif", fontSize: 12, fontWeight: "700", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+                            {si + 1}
+                          </div>
+                          <div style={{ fontFamily: "sans-serif", fontSize: 13, color: "#444", lineHeight: 1.6 }}>{step}</div>
+                        </div>
+                      ))}
+                      <div style={{ marginTop: 12, padding: "10px 14px", background: accent + "15", borderRadius: 8, borderLeft: `3px solid ${accent}`, fontFamily: "sans-serif", fontSize: 12, color: "#555", fontStyle: "italic" }}>
+                        💡 {meal.note}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+
+            <div style={{ borderRadius: "0 0 14px 14px", background: "#f0fdf4", padding: "14px 22px", borderTop: "2px dashed #b7e4c7" }}>
+              <div style={{ fontFamily: "sans-serif", fontSize: 12, color: "#2d6a4f", fontWeight: "600" }}>
+                ℹ️ Click "View Step-by-Step Preparation" on any meal above to see exact cooking instructions.
+              </div>
             </div>
           </div>
         )}
 
-        {/* Safe vs Avoid */}
-        {activeTab==="foods" && (
+        {/* SAFE VS AVOID */}
+        {activeTab === "foods" && (
           <div>
-            <div style={{ textAlign:"center", marginBottom:24 }}>
-              <h2 style={{ fontSize:24, fontWeight:"normal", color:"#1b4332", margin:"0 0 8px" }}>Foods Guide</h2>
-              <p style={{ fontFamily:"sans-serif", fontSize:13, color:"#666", margin:0 }}>Curated for gastritis + sustainable fat loss</p>
+            <div style={{ textAlign: "center", marginBottom: 20 }}>
+              <h2 style={{ fontSize: 22, fontWeight: "normal", color: "#1b4332", margin: "0 0 6px" }}>Foods Guide</h2>
+              <p style={{ fontFamily: "sans-serif", fontSize: 13, color: "#666", margin: 0 }}>Curated for gastritis + fat loss · Excludes paneer, tofu, rajma, dal makhani</p>
             </div>
-            <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:16 }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 14 }}>
               {[
-                { title:"✅ Safe Foods", subtitle:"Gut-friendly & fat-loss approved", bg:"#1b4332", items:safeVsAvoid.safe, rowBg:"#f9fdf9" },
-                { title:"❌ Avoid Foods", subtitle:"Trigger gastritis flare-ups", bg:"#b91c1c", items:safeVsAvoid.avoid, rowBg:"#fff5f5" },
-              ].map(({title,subtitle,bg,items,rowBg})=>(
-                <div key={title} style={{ background:"white", borderRadius:16, overflow:"hidden", boxShadow:"0 4px 20px rgba(0,0,0,.08)" }}>
-                  <div style={{ background:bg, padding:"14px 18px" }}>
-                    <div style={{ color:"white", fontSize:14, fontWeight:"700", fontFamily:"sans-serif" }}>{title}</div>
-                    <div style={{ color:"rgba(255,255,255,.7)", fontSize:11, fontFamily:"sans-serif", marginTop:2 }}>{subtitle}</div>
+                { title: "✅ Safe Foods", sub: "Gut-friendly & fat-loss approved", items: safeVsAvoid.safe, headerBg: "#1b4332", rowBg: "#f0fdf4" },
+                { title: "❌ Avoid Foods", sub: "Trigger gastritis flare-ups", items: safeVsAvoid.avoid, headerBg: "#b71c1c", rowBg: "#fff5f5" },
+              ].map(({ title, sub, items, headerBg, rowBg }) => (
+                <div key={title} style={{ borderRadius: 14, overflow: "hidden", boxShadow: "0 4px 18px rgba(0,0,0,0.09)" }}>
+                  <div style={{ background: headerBg, padding: "14px 18px" }}>
+                    <div style={{ color: "white", fontSize: 15, fontWeight: "700", fontFamily: "sans-serif" }}>{title}</div>
+                    <div style={{ color: "rgba(255,255,255,0.65)", fontSize: 11, fontFamily: "sans-serif", marginTop: 2 }}>{sub}</div>
                   </div>
-                  {items.map((item,i)=>(
-                    <div key={i} style={{ padding:"11px 14px", borderBottom:"1px solid #f5f5f5", display:"flex", alignItems:"flex-start", gap:8, background:i%2===0?"white":rowBg }}>
-                      <span style={{ fontSize:18, flexShrink:0 }}>{item.icon}</span>
-                      <span style={{ fontFamily:"sans-serif", fontSize:12, color:"#333", lineHeight:1.4 }}>{item.item}</span>
+                  {items.map((item, i) => (
+                    <div key={i} style={{ padding: "11px 16px", borderBottom: "1px solid #f0f0f0", display: "flex", gap: 10, background: i % 2 === 0 ? "white" : rowBg, alignItems: "flex-start" }}>
+                      <span style={{ fontSize: 18, flexShrink: 0 }}>{item.icon}</span>
+                      <span style={{ fontFamily: "sans-serif", fontSize: 12, color: "#333", lineHeight: 1.5 }}>{item.item}</span>
                     </div>
                   ))}
                 </div>
               ))}
             </div>
-          </div>
-        )}
-
-        {/* Meal Timing */}
-        {activeTab==="timing" && (
-          <div>
-            <div style={{ textAlign:"center", marginBottom:24 }}>
-              <h2 style={{ fontSize:24, fontWeight:"normal", color:"#1b4332", margin:"0 0 8px" }}>Workout Meal Timing</h2>
-              <p style={{ fontFamily:"sans-serif", fontSize:13, color:"#666", margin:0 }}>Prevent acid reflux during your 5km treadmill run</p>
-            </div>
-            <div style={{ background:"white", borderRadius:16, padding:"20px 24px", boxShadow:"0 4px 20px rgba(0,0,0,.08)", marginBottom:20 }}>
-              <div style={{ fontFamily:"sans-serif", fontSize:10, fontWeight:"800", color:"#1b4332", marginBottom:14, textTransform:"uppercase", letterSpacing:"1px" }}>📅 Ideal Daily Schedule</div>
-              {[["7:00 AM","Light breakfast (pre-workout)","#f9a825"],["8:30 AM","Treadmill 5km + resistance exercises","#43a047"],["9:30 AM","Post-workout protein meal (critical)","#e53935"],["1:00 PM","Lunch — your largest meal of the day","#1976d2"],["4:30 PM","Evening snack","#fb8c00"],["7:30 PM","Dinner — light, 2–3 hrs before sleep","#7b1fa2"],["10:00 PM","Sleep","#455a64"]].map(([time,label,color])=>(
-                <div key={time} style={{ display:"flex", gap:14, marginBottom:12, alignItems:"center" }}>
-                  <div style={{ fontFamily:"sans-serif", fontSize:12, fontWeight:"700", color, width:72, flexShrink:0 }}>{time}</div>
-                  <div style={{ width:8, height:8, borderRadius:"50%", background:color, flexShrink:0 }} />
-                  <div style={{ fontFamily:"sans-serif", fontSize:13, color:"#444" }}>{label}</div>
+            <div style={{ marginTop: 18, background: "white", borderRadius: 14, padding: "18px 20px", boxShadow: "0 3px 14px rgba(0,0,0,0.07)", borderLeft: "4px solid #fb8c00" }}>
+              <div style={{ fontFamily: "sans-serif", fontWeight: "700", color: "#e65100", marginBottom: 10, fontSize: 14 }}>⚠️ Why these 4 foods are excluded for you</div>
+              {[
+                ["Paneer", "High in saturated fat — slow to digest, can sit in stomach and worsen acid secretion."],
+                ["Tofu", "Processed soy — some people with gastritis react to phytic acid in soy products."],
+                ["Rajma (Kidney Beans)", "Even well-cooked, kidney beans cause gas and bloating — worsens gastritis discomfort."],
+                ["Dal Makhani", "Contains cream, butter, and overnight-cooked beans — too heavy and fatty for a sensitive stomach."],
+              ].map(([name, reason]) => (
+                <div key={name} style={{ display: "flex", gap: 10, marginBottom: 8, fontFamily: "sans-serif", fontSize: 13, color: "#444" }}>
+                  <span style={{ color: "#fb8c00", fontWeight: "700", flexShrink: 0 }}>→</span>
+                  <span><strong>{name}:</strong> {reason}</span>
                 </div>
               ))}
             </div>
-            {timingTips.map((tip,i)=>(
-              <div key={i} style={{ background:"white", borderRadius:16, overflow:"hidden", boxShadow:"0 4px 18px rgba(0,0,0,.07)", marginBottom:16 }}>
-                <div style={{ background:tip.color, borderLeft:`5px solid ${tip.border}`, padding:"14px 18px" }}>
-                  <div style={{ fontFamily:"sans-serif", fontSize:14, fontWeight:"700", color:"#222" }}>{tip.icon} {tip.title}</div>
+          </div>
+        )}
+
+        {/* MEAL TIMING */}
+        {activeTab === "timing" && (
+          <div>
+            <div style={{ textAlign: "center", marginBottom: 20 }}>
+              <h2 style={{ fontSize: 22, fontWeight: "normal", color: "#1b4332", margin: "0 0 6px" }}>Workout Meal Timing</h2>
+              <p style={{ fontFamily: "sans-serif", fontSize: 13, color: "#666", margin: 0 }}>Prevent acid reflux during your 5km treadmill + resistance session</p>
+            </div>
+
+            <div style={{ background: "white", borderRadius: 14, padding: "18px 20px", boxShadow: "0 3px 14px rgba(0,0,0,0.08)", marginBottom: 18, borderLeft: "4px solid #40916c" }}>
+              <div style={{ fontFamily: "sans-serif", fontWeight: "700", fontSize: 13, color: "#1b4332", marginBottom: 12 }}>📅 Ideal Daily Schedule</div>
+              {[
+                ["7:00 AM", "🌅", "Light breakfast — oats or banana + eggs"],
+                ["8:30 AM", "🏃", "Start treadmill (5km) + resistance workout"],
+                ["9:30 AM", "🍳", "Post-workout protein meal — most important meal"],
+                ["1:00 PM", "☀️", "Lunch — your largest meal of the day"],
+                ["4:30 PM", "🍎", "Evening snack — fruit + nuts or curd"],
+                ["7:30 PM", "🌙", "Dinner — light, before 8:00 PM latest"],
+                ["10:00 PM", "😴", "Sleep — head slightly elevated"],
+              ].map(([time, icon, label]) => (
+                <div key={time} style={{ display: "flex", gap: 14, alignItems: "center", marginBottom: 10, fontFamily: "sans-serif" }}>
+                  <div style={{ minWidth: 60, fontSize: 12, color: "#888", fontWeight: "600" }}>{time}</div>
+                  <div style={{ fontSize: 18 }}>{icon}</div>
+                  <div style={{ fontSize: 13, color: "#333" }}>{label}</div>
                 </div>
-                <div style={{ padding:"14px 18px" }}>
-                  {tip.tips.map((t,j)=>(
-                    <div key={j} style={{ display:"flex", gap:10, marginBottom:j<tip.tips.length-1?10:0, fontFamily:"sans-serif", fontSize:13, color:"#444", lineHeight:1.55 }}>
-                      <span style={{ color:tip.border, fontWeight:"bold", flexShrink:0 }}>→</span>
+              ))}
+            </div>
+
+            {timingTips.map((tip, i) => (
+              <div key={i} style={{ background: "white", borderRadius: 14, overflow: "hidden", boxShadow: "0 3px 14px rgba(0,0,0,0.07)", marginBottom: 14 }}>
+                <div style={{ background: tip.color, borderLeft: `5px solid ${tip.border}`, padding: "14px 18px" }}>
+                  <div style={{ fontFamily: "sans-serif", fontSize: 15, fontWeight: "700", color: "#1a1a1a" }}>{tip.icon} {tip.title}</div>
+                </div>
+                <div style={{ padding: "14px 18px" }}>
+                  {tip.tips.map((t, j) => (
+                    <div key={j} style={{ display: "flex", gap: 10, marginBottom: j < tip.tips.length - 1 ? 10 : 0, fontFamily: "sans-serif", fontSize: 13, color: "#444", lineHeight: 1.6 }}>
+                      <span style={{ color: tip.border, fontWeight: "700", flexShrink: 0 }}>→</span>
                       <span>{t}</span>
                     </div>
                   ))}
@@ -765,37 +710,53 @@ export default function DietPlan() {
           </div>
         )}
 
-        {/* Protein Guide */}
-        {activeTab==="protein" && (
+        {/* PROTEIN GUIDE */}
+        {activeTab === "protein" && (
           <div>
-            <div style={{ textAlign:"center", marginBottom:24 }}>
-              <h2 style={{ fontSize:24, fontWeight:"normal", color:"#1b4332", margin:"0 0 8px" }}>High-Protein Options</h2>
-              <p style={{ fontFamily:"sans-serif", fontSize:13, color:"#666", margin:0 }}>Stomach-gentle sources — aim for 120–140g protein/day</p>
+            <div style={{ textAlign: "center", marginBottom: 20 }}>
+              <h2 style={{ fontSize: 22, fontWeight: "normal", color: "#1b4332", margin: "0 0 6px" }}>Protein Guide</h2>
+              <p style={{ fontFamily: "sans-serif", fontSize: 13, color: "#666", margin: 0 }}>Stomach-gentle sources · Target: 120–140g protein/day</p>
             </div>
+
             {[
-              { title:"🌿 Vegetarian Sources", data:proteinOptions.veg, accent:"#1b4332", bg:"#e8f5e9" },
-              { title:"🍗 Non-Vegetarian Sources", data:proteinOptions.nonVeg, accent:"#4a235a", bg:"#f3e5f5" },
-            ].map(({title,data,accent,bg})=>(
-              <div key={title} style={{ marginBottom:24 }}>
-                <div style={{ background:accent, color:"white", padding:"14px 20px", borderRadius:"16px 16px 0 0", fontFamily:"sans-serif", fontSize:14, fontWeight:"700" }}>{title}</div>
-                <div style={{ background:"white", borderRadius:"0 0 16px 16px", overflow:"hidden", boxShadow:"0 4px 20px rgba(0,0,0,.08)" }}>
-                  {data.map((item,i)=>(
-                    <div key={i} style={{ padding:"13px 18px", borderBottom:i<data.length-1?"1px solid #f5f5f5":"none", background:i%2===0?"white":bg+"55" }}>
-                      <div style={{ display:"flex", justifyContent:"space-between", alignItems:"flex-start", gap:10, marginBottom:4 }}>
-                        <div style={{ fontFamily:"sans-serif", fontSize:14, fontWeight:"700", color:"#222" }}>{item.name}</div>
-                        <div style={{ background:accent+"18", color:accent, padding:"3px 10px", borderRadius:20, fontFamily:"sans-serif", fontSize:11, fontWeight:"700", border:`1px solid ${accent}33`, whiteSpace:"nowrap", flexShrink:0 }}>{item.amount}</div>
+              { title: "🌿 Vegetarian Protein Sources", sub: "Use daily — especially on Saturday", data: proteinOptions.veg, accent: "#2d6a4f", bg: "#e8f5e9" },
+              { title: "🍗 Non-Vegetarian Sources", sub: "Mon–Fri and Sunday only (skip Saturday)", data: proteinOptions.nonVeg, accent: "#4527a0", bg: "#ede7f6" },
+            ].map(({ title, sub, data, accent, bg }) => (
+              <div key={title} style={{ marginBottom: 22 }}>
+                <div style={{ background: accent, color: "white", padding: "14px 20px", borderRadius: "14px 14px 0 0" }}>
+                  <div style={{ fontFamily: "sans-serif", fontSize: 15, fontWeight: "700" }}>{title}</div>
+                  <div style={{ fontFamily: "sans-serif", fontSize: 11, color: "rgba(255,255,255,0.65)", marginTop: 2 }}>{sub}</div>
+                </div>
+                <div style={{ background: "white", borderRadius: "0 0 14px 14px", overflow: "hidden", boxShadow: "0 4px 18px rgba(0,0,0,0.08)" }}>
+                  {data.map((item, i) => (
+                    <div key={i} style={{ padding: "13px 18px", borderBottom: i < data.length - 1 ? "1px solid #f2f2f2" : "none", background: i % 2 === 0 ? "white" : bg + "55" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 10 }}>
+                        <div>
+                          <div style={{ fontFamily: "sans-serif", fontSize: 14, fontWeight: "700", color: "#1a1a1a", marginBottom: 4 }}>{item.name}</div>
+                          <div style={{ fontFamily: "sans-serif", fontSize: 12, color: "#777", fontStyle: "italic" }}>💡 {item.tip}</div>
+                        </div>
+                        <div style={{ background: accent + "18", color: accent, padding: "4px 10px", borderRadius: 20, fontFamily: "sans-serif", fontSize: 12, fontWeight: "700", whiteSpace: "nowrap", border: `1px solid ${accent}30`, flexShrink: 0 }}>
+                          {item.amount}
+                        </div>
                       </div>
-                      <div style={{ fontFamily:"sans-serif", fontSize:12, color:"#777", fontStyle:"italic" }}>💡 {item.tip}</div>
                     </div>
                   ))}
                 </div>
               </div>
             ))}
-            <div style={{ background:"linear-gradient(135deg,#fff8e1,#fff3e0)", borderRadius:16, padding:"20px", border:"1px solid #ffe082" }}>
-              <div style={{ fontFamily:"sans-serif", fontWeight:"800", color:"#e65100", marginBottom:12, fontSize:12, textTransform:"uppercase", letterSpacing:"1px" }}>⚠️ Gastritis Protein Rules</div>
-              {["Never eat protein on a completely empty stomach — have a banana or 2 spoons of oats first.","Avoid protein shakes with artificial sweeteners or flavours — they irritate the stomach lining.","Cook all non-veg on medium-low heat — high-heat charring increases acidity.","Space protein meals 3–4 hours apart for optimal absorption and digestion.","Always pair protein with alkaline foods — cucumber, banana, warm curd — to neutralise acid.","Target 120–140g protein/day for fat loss at your current activity level and body weight."].map((tip,i)=>(
-                <div key={i} style={{ display:"flex", gap:10, marginBottom:i<5?8:0, fontFamily:"sans-serif", fontSize:13, color:"#555", lineHeight:1.5 }}>
-                  <span style={{ color:"#e65100", flexShrink:0 }}>•</span>
+
+            <div style={{ background: "#fff8e1", borderRadius: 14, padding: "18px 20px", border: "1px solid #ffe082" }}>
+              <div style={{ fontFamily: "sans-serif", fontWeight: "700", color: "#e65100", marginBottom: 12, fontSize: 14 }}>⚠️ Protein Rules for Gastritis</div>
+              {[
+                "Never eat protein on a completely empty stomach. Have banana or oats first, then protein.",
+                "Avoid commercial whey/protein shakes — artificial sweeteners and additives trigger gastritis.",
+                "Cook all non-veg on medium-low flame. High-heat charring increases acidity in food.",
+                "Space protein meals 3–4 hours apart for optimal absorption and comfortable digestion.",
+                "Always pair protein with an alkaline food: curd, banana, cucumber, warm milk.",
+                "On Saturday (veg-only day), meet your protein target through dal + curd + milk + nuts combination.",
+              ].map((tip, i) => (
+                <div key={i} style={{ display: "flex", gap: 10, marginBottom: i < 5 ? 8 : 0, fontFamily: "sans-serif", fontSize: 13, color: "#555", lineHeight: 1.5 }}>
+                  <span style={{ color: "#e65100", flexShrink: 0 }}>•</span>
                   <span>{tip}</span>
                 </div>
               ))}
@@ -803,7 +764,10 @@ export default function DietPlan() {
           </div>
         )}
       </div>
-      <div style={{ textAlign:"center", fontFamily:"sans-serif", fontSize:11, color:"#bbb", padding:"20px" }}>For informational purposes only. Consult a gastroenterologist & registered dietitian for personal medical guidance.</div>
+
+      <div style={{ textAlign: "center", fontFamily: "sans-serif", fontSize: 11, color: "#aaa", padding: "16px 20px" }}>
+        This plan is for informational purposes only. Please consult a gastroenterologist and registered dietitian for personalised medical guidance.
+      </div>
     </div>
   );
 }
